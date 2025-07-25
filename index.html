@@ -6,31 +6,35 @@
     <title>Zomato BRD Overview</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
             scroll-behavior: smooth;
-            background-color: #f8fafc; /* Light blue-gray background */
+            background-color: #f0f2f5; /* Lighter, subtle background */
             color: #333;
         }
         .section-title {
-            @apply text-4xl font-bold text-center mb-10 text-red-600;
+            @apply text-5xl font-extrabold text-center mb-12 text-red-700 relative;
+        }
+        .section-title::after {
+            content: '';
+            @apply block w-24 h-1 bg-red-500 mx-auto mt-4 rounded-full;
         }
         .subsection-title {
-            @apply text-2xl font-semibold mb-6 text-gray-800;
+            @apply text-3xl font-bold mb-6 text-gray-800;
         }
         .card {
-            @apply bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300;
+            @apply bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-100;
         }
         .accordion-header {
-            @apply flex justify-between items-center w-full p-4 text-left font-medium text-lg text-gray-700 bg-gray-50 hover:bg-gray-100 rounded-md cursor-pointer transition-colors duration-200;
+            @apply flex justify-between items-center w-full p-5 text-left font-semibold text-xl text-gray-800 bg-red-50 hover:bg-red-100 rounded-lg cursor-pointer transition-colors duration-200 border border-red-200;
         }
         .accordion-content {
-            @apply p-4 bg-white border border-gray-200 rounded-b-md;
+            @apply p-6 bg-white border border-gray-200 rounded-b-lg shadow-inner mt-2;
         }
         .accordion-icon {
-            @apply transform transition-transform duration-200;
+            @apply transform transition-transform duration-300 text-red-600;
         }
         .accordion-icon.rotate {
             @apply rotate-180;
@@ -40,7 +44,7 @@
             width: 8px;
         }
         ::-webkit-scrollbar-track {
-            background: #f1f1f1;
+            background: #e2e8f0; /* Light gray-blue */
             border-radius: 10px;
         }
         ::-webkit-scrollbar-thumb {
@@ -50,48 +54,70 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #dc2626; /* Darker red on hover */
         }
+
+        /* Hero section specific styles */
+        .hero-section {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); /* Zomato red gradient */
+            @apply text-white py-24 px-6 text-center shadow-inner;
+        }
+        .hero-title {
+            @apply text-6xl font-extrabold mb-4 leading-tight;
+        }
+        .hero-subtitle {
+            @apply text-xl md:text-2xl opacity-90 max-w-3xl mx-auto;
+        }
     </style>
 </head>
 <body class="min-h-screen flex flex-col">
 
     <!-- Sticky Header Navigation -->
-    <header class="bg-red-600 text-white p-4 shadow-lg sticky top-0 z-50">
+    <header class="bg-gray-900 text-white p-4 shadow-xl sticky top-0 z-50">
         <nav class="container mx-auto flex flex-wrap justify-center md:justify-between items-center">
-            <h1 class="text-3xl font-bold mb-2 md:mb-0">Zomato BRD</h1>
-            <ul class="flex flex-wrap justify-center gap-4 md:gap-6 text-lg">
-                <li><a href="#overview" class="hover:text-red-200 transition-colors duration-200">Overview</a></li>
-                <li><a href="#goals" class="hover:text-red-200 transition-colors duration-200">Goals</a></li>
-                <li><a href="#stakeholders" class="hover:text-red-200 transition-colors duration-200">Stakeholders</a></li>
-                <li><a href="#scope" class="hover:text-red-200 transition-colors duration-200">Scope</a></li>
-                <li><a href="#user-stories" class="hover:text-red-200 transition-colors duration-200">User Stories</a></li>
-                <li><a href="#kpis" class="hover:text-red-200 transition-colors duration-200">KPIs</a></li>
-                <li><a href="#risks" class="hover:text-red-200 transition-colors duration-200">Risks</a></li>
+            <div class="flex items-center mb-2 md:mb-0">
+                <!-- Zomato-like icon/logo placeholder -->
+                <svg class="w-8 h-8 mr-3 text-red-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm-1-9a1 1 0 000 2h2a1 1 0 100-2h-2z" clip-rule="evenodd"></path></svg>
+                <h1 class="text-3xl font-extrabold">Zomato BRD</h1>
+            </div>
+            <ul class="flex flex-wrap justify-center gap-4 md:gap-8 text-lg font-medium">
+                <li><a href="#overview" class="hover:text-red-400 transition-colors duration-200">Overview</a></li>
+                <li><a href="#goals" class="hover:text-red-400 transition-colors duration-200">Goals</a></li>
+                <li><a href="#stakeholders" class="hover:text-red-400 transition-colors duration-200">Stakeholders</a></li>
+                <li><a href="#scope" class="hover:text-red-400 transition-colors duration-200">Scope</a></li>
+                <li><a href="#user-stories" class="hover:text-red-400 transition-colors duration-200">User Stories</a></li>
+                <li><a href="#kpis" class="hover:text-red-400 transition-colors duration-200">KPIs</a></li>
+                <li><a href="#risks" class="hover:text-red-400 transition-colors duration-200">Risks</a></li>
             </ul>
         </nav>
     </header>
 
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <h2 class="hero-title">Zomato's Strategic Evolution</h2>
+        <p class="hero-subtitle">Unpacking the Business Requirements for Sustainable Growth, Enhanced Market Dominance, and Future Innovation.</p>
+    </section>
+
     <!-- Main Content Area -->
-    <main class="flex-grow container mx-auto p-6 md:p-10">
+    <main class="flex-grow container mx-auto p-6 md:p-10 lg:p-12">
 
         <!-- Project Overview Section -->
-        <section id="overview" class="mb-16 pt-20 -mt-20">
+        <section id="overview" class="mb-20 pt-24 -mt-24">
             <h2 class="section-title">Project Overview</h2>
-            <div class="card max-w-3xl mx-auto text-lg leading-relaxed">
+            <div class="card max-w-4xl mx-auto text-lg leading-relaxed text-gray-700">
                 <p>The Zomato Business Requirement Document outlines the comprehensive needs for the continued evolution and strategic expansion of Zomato's integrated food-tech ecosystem, encompassing its core food delivery, dining-out services, quick commerce (Blinkit), and B2B restaurant supplies (Hyperpure). This document serves as a foundational guide for all stakeholders, detailing the functional and non-functional requirements necessary to achieve Zomato's overarching business goals of sustainable profitability, enhanced market dominance, and the integration of advanced technologies and sustainability initiatives across its diverse service offerings.</p>
             </div>
         </section>
 
         <!-- Business Goals and Objectives Section -->
-        <section id="goals" class="mb-16 pt-20 -mt-20">
+        <section id="goals" class="mb-20 pt-24 -mt-24">
             <h2 class="section-title">Business Goals & Objectives</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
                 <div class="card">
                     <h3 class="subsection-title">Overall Strategic Goals</h3>
                     <p class="text-gray-700 leading-relaxed">The overarching objective is to achieve meaningful scale and sustained profits across all key business segments. This includes a deliberate shift from a growth-at-all-costs strategy to prioritizing profitability, as evidenced by the company reporting a profit of INR 351 crore in FY24, a significant turnaround from a loss of INR 917 crore in FY23. The company aims to improve unit economics through dynamic pricing models and cost optimization strategies to enhance profit margins per transaction.</p>
                 </div>
                 <div class="card">
                     <h3 class="subsection-title">Segment-Specific Goals</h3>
-                    <ul class="list-disc list-inside space-y-2 text-gray-700">
+                    <ul class="list-disc list-inside space-y-3 text-gray-700">
                         <li><strong>Food Delivery:</strong> Maintain stability and ensure continued growth, leveraging the large runway for expansion in India.</li>
                         <li><strong>Quick Commerce (Blinkit):</strong> Achieve aggressive expansion, aiming for 2,000 stores by December 2025, with visibility for further expansion to 3,000 stores, to significantly increase its addressable market and cross-leverage the existing customer base and delivery fleet.</li>
                         <li><strong>B2B Supplies (Hyperpure):</strong> Drive strong adoption and growth, with the vision for this business to become as large as or even larger than the food delivery business due to its larger addressable market.</li>
@@ -102,46 +128,46 @@
         </section>
 
         <!-- Stakeholders and Their Needs Section -->
-        <section id="stakeholders" class="mb-16 pt-20 -mt-20">
+        <section id="stakeholders" class="mb-20 pt-24 -mt-24">
             <h2 class="section-title">Stakeholders & Their Needs</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
                 <div class="card">
-                    <h3 class="font-semibold text-xl text-gray-800 mb-2">Zomato Leadership & Executives</h3>
-                    <p class="text-gray-700">Concerned with overall strategic direction, financial performance (profitability, revenue growth), market share, long-term sustainability, and investor relations.</p>
+                    <h3 class="font-bold text-xl text-gray-800 mb-2">Zomato Leadership & Executives</h3>
+                    <p class="text-gray-700 text-base">Concerned with overall strategic direction, financial performance (profitability, revenue growth), market share, long-term sustainability, and investor relations.</p>
                 </div>
                 <div class="card">
-                    <h3 class="font-semibold text-xl text-gray-800 mb-2">Product Management & Engineering Leads</h3>
-                    <p class="text-gray-700">Responsible for defining product roadmaps, translating business requirements into technical specifications, managing development teams, and ensuring technical feasibility and quality.</p>
+                    <h3 class="font-bold text-xl text-gray-800 mb-2">Product Management & Engineering Leads</h3>
+                    <p class="text-gray-700 text-base">Responsible for defining product roadmaps, translating business requirements into technical specifications, managing development teams, and ensuring technical feasibility and quality.</p>
                 </div>
                 <div class="card">
-                    <h3 class="font-semibold text-xl text-gray-800 mb-2">Sales & Marketing Teams</h3>
-                    <p class="text-gray-700">Focused on customer acquisition, retention, brand building, promotional strategies, and revenue generation. They require features that enable effective campaigns and provide insights into market performance.</p>
+                    <h3 class="font-bold text-xl text-gray-800 mb-2">Sales & Marketing Teams</h3>
+                    <p class="text-gray-700 text-base">Focused on customer acquisition, retention, brand building, promotional strategies, and revenue generation. They require features that enable effective campaigns and provide insights into market performance.</p>
                 </div>
                 <div class="card">
-                    <h3 class="font-semibold text-xl text-gray-800 mb-2">Operations & Logistics Teams</h3>
-                    <p class="text-gray-700">Concerned with the efficiency, scalability, and reliability of delivery operations, restaurant onboarding, and delivery partner management. They need tools for real-time monitoring, issue resolution, and optimization.</p>
+                    <h3 class="font-bold text-xl text-gray-800 mb-2">Operations & Logistics Teams</h3>
+                    <p class="text-gray-700 text-base">Concerned with the efficiency, scalability, and reliability of delivery operations, restaurant onboarding, and delivery partner management. They need tools for real-time monitoring, issue resolution, and optimization.</p>
                 </div>
                 <div class="card">
-                    <h3 class="font-semibold text-xl text-gray-800 mb-2">Finance & Legal Teams</h3>
-                    <p class="text-gray-700">Ensure financial compliance, accurate revenue reporting, secure payment processing, commission structures, and adherence to legal and regulatory frameworks.</p>
+                    <h3 class="font-bold text-xl text-gray-800 mb-2">Finance & Legal Teams</h3>
+                    <p class="text-gray-700 text-base">Ensure financial compliance, accurate revenue reporting, secure payment processing, commission structures, and adherence to legal and regulatory frameworks.</p>
                 </div>
                 <div class="card">
-                    <h3 class="font-semibold text-xl text-gray-800 mb-2">Investors & Shareholders</h3>
-                    <p class="text-gray-700">Interested in Zomato's financial health, growth trajectory, profitability, and return on investment.</p>
+                    <h3 class="font-bold text-xl text-gray-800 mb-2">Investors & Shareholders</h3>
+                    <p class="text-gray-700 text-base">Interested in Zomato's financial health, growth trajectory, profitability, and return on investment.</p>
                 </div>
                 <div class="card">
-                    <h3 class="font-semibold text-xl text-gray-800 mb-2">Regulatory Bodies</h3>
-                    <p class="text-gray-700">Oversee compliance with industry-specific regulations (e.g., food safety, consumer protection) and broader legal frameworks.</p>
+                    <h3 class="font-bold text-xl text-gray-800 mb-2">Regulatory Bodies</h3>
+                    <p class="text-gray-700 text-base">Oversee compliance with industry-specific regulations (e.g., food safety, consumer protection) and broader legal frameworks.</p>
                 </div>
             </div>
         </section>
 
         <!-- Scope of the System Section -->
-        <section id="scope" class="mb-16 pt-20 -mt-20">
+        <section id="scope" class="mb-20 pt-24 -mt-24">
             <h2 class="section-title">Scope of the System</h2>
-            <div class="card max-w-3xl mx-auto">
-                <p class="text-lg leading-relaxed mb-4">The Zomato platform encompasses a broad range of services designed to create a comprehensive food-tech ecosystem. The primary services and functionalities within the scope of the Zomato system include:</p>
-                <ul class="list-disc list-inside space-y-2 text-gray-700">
+            <div class="card max-w-4xl mx-auto">
+                <p class="text-lg leading-relaxed mb-6 text-gray-700">The Zomato platform encompasses a broad range of services designed to create a comprehensive food-tech ecosystem. The primary services and functionalities within the scope of the Zomato system include:</p>
+                <ul class="list-disc list-inside space-y-3 text-gray-700 text-base">
                     <li><strong>Food Ordering and Delivery:</strong> Core functionality enabling users to browse restaurants, select menu items, place orders, and receive doorstep delivery.</li>
                     <li><strong>Dining Out Services:</strong> Features for restaurant discovery, detailed menu viewing, ratings, reviews, and table reservations. This also includes event-based monetization through initiatives like Zomaland.</li>
                     <li><strong>Quick Commerce (Blinkit):</strong> Rapid delivery of groceries and other merchandise from dark stores, typically under 15 minutes.</li>
@@ -155,29 +181,29 @@
         </section>
 
         <!-- Business Requirements: User Stories Section -->
-        <section id="user-stories" class="mb-16 pt-20 -mt-20">
+        <section id="user-stories" class="mb-20 pt-24 -mt-24">
             <h2 class="section-title">Business Requirements: User Stories</h2>
-            <div class="space-y-4">
+            <div class="space-y-6">
                 <!-- Customer-Facing User Stories -->
                 <div class="accordion-item">
                     <button class="accordion-header">
                         <span>Customer-Facing User Stories</span>
-                        <svg class="accordion-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        <svg class="accordion-icon w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </button>
                     <div class="accordion-content hidden">
-                        <h4 class="font-semibold text-lg mb-2">User Registration & Discovery:</h4>
-                        <ul class="list-disc list-inside space-y-1 text-gray-700 mb-4">
+                        <h4 class="font-bold text-xl mb-3 text-gray-800">User Registration & Discovery:</h4>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700 text-base mb-6">
                             <li>As a new customer, I want to easily register and log in using multiple options (e.g., email, social media), so that I can quickly access Zomato's services.</li>
                             <li>As a customer, I want to search for restaurants by cuisine, location, or dish, and filter results by preferences (e.g., dietary, price), so that I can efficiently find exactly what I'm looking for.</li>
                             <li>As a customer, I want to receive AI-powered restaurant and dish recommendations, so that I can discover new options tailored to my tastes.</li>
                         </ul>
-                        <h4 class="font-semibold text-lg mb-2">Ordering & Payment:</h4>
-                        <ul class="list-disc list-inside space-y-1 text-gray-700 mb-4">
+                        <h4 class="font-bold text-xl mb-3 text-gray-800">Ordering & Payment:</h4>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700 text-base mb-6">
                             <li>As a customer, I want to add items to my cart and customize my order (e.g., add notes, modify ingredients), so that I get my meal exactly as I want it.</li>
                             <li>As a customer, I want to have multiple secure payment options (e.g., UPI, cards, wallets, COD), so that I can complete my order conveniently and safely.</li>
                         </ul>
-                        <h4 class="font-semibold text-lg mb-2">Post-Order Experience:</h4>
-                        <ul class="list-disc list-inside space-y-1 text-gray-700">
+                        <h4 class="font-bold text-xl mb-3 text-gray-800">Post-Order Experience:</h4>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700 text-base">
                             <li>As a customer, I want to track my order in real-time on a map, including the delivery partner's location, so that I know exactly when my food will arrive.</li>
                             <li>As a customer, I want to provide ratings and reviews for restaurants and delivery experiences, so that I can share my feedback and help others make informed choices.</li>
                         </ul>
@@ -188,16 +214,16 @@
                 <div class="accordion-item">
                     <button class="accordion-header">
                         <span>Restaurant Partner User Stories</span>
-                        <svg class="accordion-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        <svg class="accordion-icon w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </button>
                     <div class="accordion-content hidden">
-                        <h4 class="font-semibold text-lg mb-2">Onboarding & Profile Management:</h4>
-                        <ul class="list-disc list-inside space-y-1 text-gray-700 mb-4">
+                        <h4 class="font-bold text-xl mb-3 text-gray-800">Onboarding & Profile Management:</h4>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700 text-base mb-6">
                             <li>As a restaurant owner, I want to easily onboard my restaurant and manage my profile details (e.g., timings, menu, FSSAI info), so that my business is accurately represented on the platform.</li>
                             <li>As a restaurant owner, I want to manage my menu items, including adding, editing, and marking items in/out of stock, so that my online menu is always up-to-date.</li>
                         </ul>
-                        <h4 class="font-semibold text-lg mb-2">Order & Business Management:</h4>
-                        <ul class="list-disc list-inside space-y-1 text-gray-700 mb-4">
+                        <h4 class="font-bold text-xl mb-3 text-gray-800">Order & Business Management:</h4>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700 text-base mb-6">
                             <li>As a restaurant staff member, I want to receive instant notifications for new orders and efficiently accept/process them, so that I can fulfill customer orders promptly.</li>
                             <li>As a restaurant owner, I want to access comprehensive business reports (e.g., sales, payouts, customer funnel), so that I can analyze my performance and make data-driven decisions.</li>
                             <li>As a restaurant owner, I want to create and manage promotional offers and advertisements, so that I can attract more customers and boost sales.</li>
@@ -209,16 +235,16 @@
                 <div class="accordion-item">
                     <button class="accordion-header">
                         <span>Delivery Partner User Stories</span>
-                        <svg class="accordion-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        <svg class="accordion-icon w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </button>
                     <div class="accordion-content hidden">
-                        <h4 class="font-semibold text-lg mb-2">Availability & Order Flow:</h4>
-                        <ul class="list-disc list-inside space-y-1 text-gray-700 mb-4">
+                        <h4 class="font-bold text-xl mb-3 text-gray-800">Availability & Order Flow:</h4>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700 text-base mb-6">
                             <li>As a delivery partner, I want to easily log in and manage my availability, so that I can receive delivery assignments when I'm ready to work.</li>
                             <li>As a delivery partner, I want to receive clear notifications for new orders and accept/decline them efficiently, so that I can manage my delivery tasks effectively.</li>
                         </ul>
-                        <h4 class="font-semibold text-lg mb-2">Navigation & Support:</h4>
-                        <ul class="list-disc list-inside space-y-1 text-gray-700 mb-4">
+                        <h4 class="font-bold text-xl mb-3 text-gray-800">Navigation & Support:</h4>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700 text-base mb-6">
                             <li>As a delivery partner, I want route optimization tools within the app, so that I can find the most efficient path to pick up and deliver orders.</li>
                             <li>As a delivery partner, I want to track my earnings transparently within the app, so that I can monitor my income.</li>
                             <li>As a delivery partner, I want in-app chat support and access to emergency services, so that I can quickly resolve issues or get help when needed.</li>
@@ -230,16 +256,16 @@
                 <div class="accordion-item">
                     <button class="accordion-header">
                         <span>Platform Administration User Stories</span>
-                        <svg class="accordion-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        <svg class="accordion-icon w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </button>
                     <div class="accordion-content hidden">
-                        <h4 class="font-semibold text-lg mb-2">User & Content Management:</h4>
-                        <ul class="list-disc list-inside space-y-1 text-gray-700 mb-4">
+                        <h4 class="font-bold text-xl mb-3 text-gray-800">User & Content Management:</h4>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700 text-base mb-6">
                             <li>As an administrator, I want to manage customer, restaurant, and delivery partner accounts (e.g., activate, suspend, update details), so that I can maintain platform integrity and provide support.</li>
                             <li>As an administrator, I want to manage restaurant listings, menus, and promotional content across the platform, so that I can ensure accuracy and relevance.</li>
                         </ul>
-                        <h4 class="font-semibold text-lg mb-2">Monitoring & Reporting:</h4>
-                        <ul class="list-disc list-inside space-y-1 text-gray-700">
+                        <h4 class="font-bold text-xl mb-3 text-gray-800">Monitoring & Reporting:</h4>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700 text-base">
                             <li>As an operations manager, I want to monitor all live orders and intervene in case of issues, so that I can ensure smooth operations and resolve problems quickly.</li>
                             <li>As a finance analyst, I want to generate detailed reports on revenue, commissions, and payouts across all business segments, so that I can track financial performance and ensure accurate settlements.</li>
                         </ul>
@@ -249,17 +275,17 @@
         </section>
 
         <!-- Requirement Metrics (KPIs) Section -->
-        <section id="kpis" class="mb-16 pt-20 -mt-20">
+        <section id="kpis" class="mb-20 pt-24 -mt-24">
             <h2 class="section-title">Requirement Metrics (KPIs)</h2>
-            <div class="space-y-4">
+            <div class="space-y-6">
                 <!-- Customer Experience & Engagement Metrics -->
                 <div class="accordion-item">
                     <button class="accordion-header">
                         <span>Customer Experience & Engagement Metrics</span>
-                        <svg class="accordion-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        <svg class="accordion-icon w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </button>
                     <div class="accordion-content hidden">
-                        <ul class="list-disc list-inside space-y-2 text-gray-700">
+                        <ul class="list-disc list-inside space-y-2 text-gray-700 text-base">
                             <li><strong>Average Monthly Transacting Customers (AMTC):</strong> Indicates the size and activity of the core customer base.</li>
                             <li><strong>Order Frequency (per customer):</strong> Reflects customer engagement and stickiness.</li>
                             <li><strong>Customer Retention Rate:</strong> Measures the effectiveness of loyalty programs and overall customer satisfaction.</li>
@@ -273,10 +299,10 @@
                 <div class="accordion-item">
                     <button class="accordion-header">
                         <span>Operational Efficiency & Service Quality Metrics</span>
-                        <svg class="accordion-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        <svg class="accordion-icon w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </button>
                     <div class="accordion-content hidden">
-                        <ul class="list-disc list-inside space-y-2 text-gray-700">
+                        <ul class="list-disc list-inside space-y-2 text-gray-700 text-base">
                             <li><strong>Average Delivery Time:</strong> Directly impacts customer satisfaction and quick commerce competitiveness.</li>
                             <li><strong>Order Fulfillment Rate:</strong> Measures reliability and operational accuracy.</li>
                             <li><strong>Restaurant Partner Onboarding Time:</strong> Reflects efficiency of partner acquisition processes.</li>
@@ -290,10 +316,10 @@
                 <div class="accordion-item">
                     <button class="accordion-header">
                         <span>Financial Performance & Growth Metrics</span>
-                        <svg class="accordion-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        <svg class="accordion-icon w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </button>
                     <div class="accordion-content hidden">
-                        <ul class="list-disc list-inside space-y-2 text-gray-700">
+                        <ul class="list-disc list-inside space-y-2 text-gray-700 text-base">
                             <li><strong>Gross Order Value (GOV):</strong> Primary indicator of overall business scale and transaction volume.</li>
                             <li><strong>Adjusted Revenue:</strong> Provides a more accurate picture of core earnings.</li>
                             <li><strong>Adjusted EBITDA:</strong> Key indicator of the company's ability to generate profit from its operations.</li>
@@ -308,10 +334,10 @@
                 <div class="accordion-item">
                     <button class="accordion-header">
                         <span>Sustainability & Social Impact Metrics</span>
-                        <svg class="accordion-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        <svg class="accordion-icon w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
                     </button>
                     <div class="accordion-content hidden">
-                        <ul class="list-disc list-inside space-y-2 text-gray-700">
+                        <ul class="list-disc list-inside space-y-2 text-gray-700 text-base">
                             <li><strong>Percentage of EV-based Deliveries:</strong> Measures progress towards net-zero emissions.</li>
                             <li><strong>Plastic Neutrality Achievement:</strong> Reflects commitment to environmental responsibility.</li>
                             <li><strong>Number of PwD (Persons with Disabilities) Delivery Partners:</strong> Measures progress in inclusive hiring and social impact.</li>
@@ -323,13 +349,13 @@
         </section>
 
         <!-- Constraints, Assumptions, and Risks Section -->
-        <section id="risks" class="mb-16 pt-20 -mt-20">
+        <section id="risks" class="mb-20 pt-24 -mt-24">
             <h2 class="section-title">Constraints, Assumptions, & Risks</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
                 <!-- Constraints -->
-                <div class="card bg-blue-50">
+                <div class="card bg-blue-50 border-blue-200">
                     <h3 class="subsection-title text-blue-800">Constraints</h3>
-                    <ul class="list-disc list-inside space-y-2 text-gray-700">
+                    <ul class="list-disc list-inside space-y-2 text-gray-700 text-base">
                         <li>High Delivery Costs</li>
                         <li>Reliance on Discounts</li>
                         <li>Intense Competitive Landscape</li>
@@ -338,9 +364,9 @@
                     </ul>
                 </div>
                 <!-- Assumptions -->
-                <div class="card bg-green-50">
+                <div class="card bg-green-50 border-green-200">
                     <h3 class="subsection-title text-green-800">Assumptions</h3>
-                    <ul class="list-disc list-inside space-y-2 text-gray-700">
+                    <ul class="list-disc list-inside space-y-2 text-gray-700 text-base">
                         <li>Continued Smartphone and Internet Penetration Growth</li>
                         <li>Evolving Consumer Preferences Alignment</li>
                         <li>Stable Economic Conditions</li>
@@ -349,9 +375,9 @@
                     </ul>
                 </div>
                 <!-- Risks -->
-                <div class="card bg-red-50">
+                <div class="card bg-red-50 border-red-200">
                     <h3 class="subsection-title text-red-800">Risks</h3>
-                    <ul class="list-disc list-inside space-y-2 text-gray-700">
+                    <ul class="list-disc list-inside space-y-2 text-gray-700 text-base">
                         <li>Food Safety & Quality Incidents</li>
                         <li>Increased Regulatory Scrutiny & Penalties</li>
                         <li>Customer Acquisition & Retention Challenges</li>
@@ -367,8 +393,8 @@
     </main>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-white p-6 text-center text-sm">
-        <p>&copy; 2025 Zomato BRD Overview. All rights reserved.</p>
+    <footer class="bg-gray-900 text-gray-300 p-8 text-center text-sm">
+        <p>&copy; 2025 Zomato BRD Overview. All rights reserved. Designed with <span class="text-red-500">&hearts;</span> and Tailwind CSS.</p>
     </footer>
 
     <script>
@@ -385,14 +411,6 @@
                     accordionContent.classList.toggle('hidden');
                     // Rotate the icon
                     accordionIcon.classList.toggle('rotate');
-
-                    // Close other open accordions in the same group (optional, but good for single-open behavior)
-                    // accordionHeaders.forEach(otherHeader => {
-                    //     if (otherHeader !== header) {
-                    //         otherHeader.nextElementSibling.classList.add('hidden');
-                    //         otherHeader.querySelector('.accordion-icon').classList.remove('rotate');
-                    //     }
-                    // });
                 });
             });
 
