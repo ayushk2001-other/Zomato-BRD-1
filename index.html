@@ -1,73 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Zomato BRD Overview</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
             scroll-behavior: smooth;
-            background-color: #f0f2f5; /* Lighter, subtle background */
+            background-color: #f0f2f5;
+            /* Lighter, subtle background */
             color: #333;
         }
+
         .section-title {
             @apply text-5xl font-extrabold text-center mb-12 text-red-700 relative;
         }
+
         .section-title::after {
             content: '';
             @apply block w-24 h-1 bg-red-500 mx-auto mt-4 rounded-full;
         }
+
         .subsection-title {
             @apply text-3xl font-bold mb-6 text-gray-800;
         }
+
         .card {
             @apply bg-white p-8 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-100;
         }
+
         .accordion-header {
             @apply flex justify-between items-center w-full p-5 text-left font-semibold text-xl text-gray-800 bg-red-50 hover:bg-red-100 rounded-lg cursor-pointer transition-colors duration-200 border border-red-200;
         }
+
         .accordion-content {
             @apply p-6 bg-white border border-gray-200 rounded-b-lg shadow-inner mt-2;
         }
+
         .accordion-icon {
             @apply transform transition-transform duration-300 text-red-600;
         }
+
         .accordion-icon.rotate {
             @apply rotate-180;
         }
+
         /* Custom scrollbar for better aesthetics */
         ::-webkit-scrollbar {
             width: 8px;
         }
+
         ::-webkit-scrollbar-track {
-            background: #e2e8f0; /* Light gray-blue */
+            background: #e2e8f0;
+            /* Light gray-blue */
             border-radius: 10px;
         }
+
         ::-webkit-scrollbar-thumb {
-            background: #ef4444; /* Zomato red */
+            background: #ef4444;
+            /* Zomato red */
             border-radius: 10px;
         }
+
         ::-webkit-scrollbar-thumb:hover {
-            background: #dc2626; /* Darker red on hover */
+            background: #dc2626;
+            /* Darker red on hover */
         }
 
         /* Hero section specific styles */
         .hero-section {
-            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); /* Zomato red gradient */
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            /* Zomato red gradient */
             @apply text-white py-24 px-6 text-center shadow-inner;
         }
+
         .hero-title {
             @apply text-6xl font-extrabold mb-4 leading-tight;
         }
+
         .hero-subtitle {
             @apply text-xl md:text-2xl opacity-90 max-w-3xl mx-auto;
         }
     </style>
 </head>
+
 <body class="min-h-screen flex flex-col">
 
     <!-- Sticky Header Navigation -->
@@ -75,199 +97,409 @@
         <nav class="container mx-auto flex flex-wrap justify-center md:justify-between items-center">
             <div class="flex items-center mb-2 md:mb-0">
                 <!-- Zomato-like icon/logo placeholder -->
-                <svg class="w-8 h-8 mr-3 text-red-500" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm-1-9a1 1 0 000 2h2a1 1 0 100-2h-2z" clip-rule="evenodd"></path></svg>
+                <svg class="w-8 h-8 mr-3 text-red-500" fill="currentColor" viewBox="0 0 20 20"
+                    xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm-1-9a1 1 0 000 2h2a1 1 0 100-2h-2z"
+                        clip-rule="evenodd"></path>
+                </svg>
                 <h1 class="text-3xl font-extrabold">Zomato BRD</h1>
             </div>
             <ul class="flex flex-wrap justify-center gap-4 md:gap-8 text-lg font-medium">
                 <li><a href="#overview" class="hover:text-red-400 transition-colors duration-200">Overview</a></li>
                 <li><a href="#goals" class="hover:text-red-400 transition-colors duration-200">Goals</a></li>
-                <li><a href="#stakeholders" class="hover:text-red-400 transition-colors duration-200">Stakeholders</a></li>
+                <li><a href="#stakeholders" class="hover:text-red-400 transition-colors duration-200">Stakeholders</a>
+                </li>
                 <li><a href="#scope" class="hover:text-red-400 transition-colors duration-200">Scope</a></li>
-                <li><a href="#user-stories" class="hover:text-red-400 transition-colors duration-200">User Stories</a></li>
+                <li><a href="#user-stories" class="hover:text-red-400 transition-colors duration-200">User Stories</a>
+                </li>
                 <li><a href="#kpis" class="hover:text-red-400 transition-colors duration-200">KPIs</a></li>
                 <li><a href="#risks" class="hover:text-red-400 transition-colors duration-200">Risks</a></li>
             </ul>
         </nav>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero-section">
-        <h2 class="hero-title">Zomato's Strategic Evolution</h2>
-        <p class="hero-subtitle">Unpacking the Business Requirements for Sustainable Growth, Enhanced Market Dominance, and Future Innovation.</p>
+    <section
+        class="hero-section bg-gradient-to-r from-red-500 to-orange-600 text-white py-20 px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="hero-title text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-tight mb-4 drop-shadow-lg">
+            Zomato's Strategic Evolution</h2>
+        <p class="hero-subtitle text-lg sm:text-xl lg:text-2xl opacity-90 max-w-3xl mx-auto">Unpacking the Business
+            Requirements for Sustainable Growth, Enhanced Market Dominance, and Future Innovation.</p>
     </section>
 
     <!-- Main Content Area -->
     <main class="flex-grow container mx-auto p-6 md:p-10 lg:p-12">
 
-        <!-- Project Overview Section -->
-        <section id="overview" class="mb-20 pt-24 -mt-24">
-            <h2 class="section-title">Project Overview</h2>
-            <div class="card max-w-4xl mx-auto text-lg leading-relaxed text-gray-700">
-                <p>The Zomato Business Requirement Document outlines the comprehensive needs for the continued evolution and strategic expansion of Zomato's integrated food-tech ecosystem, encompassing its core food delivery, dining-out services, quick commerce (Blinkit), and B2B restaurant supplies (Hyperpure). This document serves as a foundational guide for all stakeholders, detailing the functional and non-functional requirements necessary to achieve Zomato's overarching business goals of sustainable profitability, enhanced market dominance, and the integration of advanced technologies and sustainability initiatives across its diverse service offerings.</p>
+        <section id="overview" class="mb-20 pt-24 -mt-24 bg-gray-50 dark:bg-gray-800 py-12 px-4 sm:px-6 lg:px-8">
+            <h2 class="section-title text-3xl sm:text-4xl font-bold text-center mb-8 text-gray-800 dark:text-white">
+                Project Overview</h2>
+            <div
+                class="card max-w-4xl mx-auto p-6 sm:p-8 bg-white dark:bg-gray-900 rounded-lg shadow-xl text-lg leading-relaxed text-gray-700 dark:text-gray-300">
+                <p>The Zomato Business Requirement Document outlines the comprehensive needs for the continued evolution
+                    and strategic expansion of Zomato's integrated food-tech ecosystem, encompassing its core food
+                    delivery, dining-out services, quick commerce (Blinkit), and B2B restaurant supplies (Hyperpure).
+                    This document serves as a foundational guide for all stakeholders, detailing the functional and
+                    non-functional requirements necessary to achieve Zomato's overarching business goals of sustainable
+                    profitability, enhanced market dominance, and the integration of advanced technologies and
+                    sustainability initiatives across its diverse service offerings.</p>
             </div>
         </section>
 
         <!-- Business Goals and Objectives Section -->
-        <section id="goals" class="mb-20 pt-24 -mt-24">
-            <h2 class="section-title">Business Goals & Objectives</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
-                <div class="card">
-                    <h3 class="subsection-title">Overall Strategic Goals</h3>
-                    <p class="text-gray-700 leading-relaxed">The overarching objective is to achieve meaningful scale and sustained profits across all key business segments. This includes a deliberate shift from a growth-at-all-costs strategy to prioritizing profitability, as evidenced by the company reporting a profit of INR 351 crore in FY24, a significant turnaround from a loss of INR 917 crore in FY23. The company aims to improve unit economics through dynamic pricing models and cost optimization strategies to enhance profit margins per transaction.</p>
+        <section id="goals"
+            class="mb-20 pt-24 -mt-24 bg-gradient-to-br from-red-50 to-orange-100 dark:from-gray-900 dark:to-gray-800 py-16 px-4 sm:px-6 lg:px-8">
+            <h2
+                class="section-title text-4xl sm:text-5xl font-extrabold text-center mb-12 text-gray-800 dark:text-white">
+                Business Goals & Objectives</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 max-w-6xl mx-auto">
+                <div
+                    class="card bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 p-6 sm:p-8 border border-red-200 dark:border-gray-700">
+                    <h3 class="subsection-title text-2xl sm:text-3xl font-bold mb-4 text-red-700 dark:text-red-400">
+                        Overall Strategic Goals</h3>
+                    <p class="text-gray-700 dark:text-gray-300 leading-relaxed text-base sm:text-lg">The overarching
+                        objective is to achieve <strong>meaningful scale and sustained profits</strong> across all key
+                        business segments. This includes a deliberate shift from a growth-at-all-costs strategy to
+                        prioritizing profitability, as evidenced by the company reporting a profit of <strong>INR 351 crore in
+                        FY24</strong>, a significant turnaround from a loss of INR 917 crore in FY23. The company aims to
+                        improve unit economics through <strong>dynamic pricing models and cost optimization strategies</strong> to
+                        enhance profit margins per transaction.</p>
                 </div>
-                <div class="card">
-                    <h3 class="subsection-title">Segment-Specific Goals</h3>
-                    <ul class="list-disc list-inside space-y-3 text-gray-700">
-                        <li><strong>Food Delivery:</strong> Maintain stability and ensure continued growth, leveraging the large runway for expansion in India.</li>
-                        <li><strong>Quick Commerce (Blinkit):</strong> Achieve aggressive expansion, aiming for 2,000 stores by December 2025, with visibility for further expansion to 3,000 stores, to significantly increase its addressable market and cross-leverage the existing customer base and delivery fleet.</li>
-                        <li><strong>B2B Supplies (Hyperpure):</strong> Drive strong adoption and growth, with the vision for this business to become as large as or even larger than the food delivery business due to its larger addressable market.</li>
-                        <li><strong>Going-out (Dining-out & Ticketing):</strong> Scale to $3 billion in annual topline (Net Order Value) with $150 million of Adjusted EBITDA over the next five years, focusing on premium customer base and diverse use cases.</li>
+                <div
+                    class="card bg-white dark:bg-gray-800 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 p-6 sm:p-8 border border-orange-200 dark:border-gray-700">
+                    <h3
+                        class="subsection-title text-2xl sm:text-3xl font-bold mb-4 text-orange-700 dark:text-orange-400">
+                        Segment-Specific Goals</h3>
+                    <ul class="list-disc list-inside space-y-4 text-gray-700 dark:text-gray-300 text-base sm:text-lg">
+                        <li><strong class="text-gray-900 dark:text-white">Food Delivery:</strong> Maintain stability and
+                            ensure continued growth, leveraging the large runway for expansion in India.</li>
+                        <li><strong class="text-gray-900 dark:text-white">Quick Commerce (Blinkit):</strong> Achieve
+                            <strong> aggressive expansion</strong>, aiming for <strong>,000 stores by December 2025</strong>, with visibility for
+                            further expansion to 3,000 stores, to significantly increase its addressable market and
+                            cross-leverage the existing customer base and delivery fleet.</li>
+                        <li><strong class="text-gray-900 dark:text-white">B2B Supplies (Hyperpure):</strong> Drive
+                            strong adoption and growth, with the vision for this business to become as large as or even
+                            larger than the food delivery business due to its larger addressable market.</li>
+                        <li><strong class="text-gray-900 dark:text-white">Going-out (Dining-out & Ticketing):</strong>
+                            Scale to <strong>$3 billion in annual topline</strong> (Net Order Value) with <strong>$150 million of Adjusted
+                            EBITDA</strong> over the next five years, focusing on premium customer base and diverse use cases.
+                        </li>
                     </ul>
                 </div>
             </div>
         </section>
 
         <!-- Stakeholders and Their Needs Section -->
-        <section id="stakeholders" class="mb-20 pt-24 -mt-24">
-            <h2 class="section-title">Stakeholders & Their Needs</h2>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-                <div class="card">
-                    <h3 class="font-bold text-xl text-gray-800 mb-2">Zomato Leadership & Executives</h3>
-                    <p class="text-gray-700 text-base">Concerned with overall strategic direction, financial performance (profitability, revenue growth), market share, long-term sustainability, and investor relations.</p>
+        <section id="stakeholders" class="mb-20 pt-24 -mt-24 bg-gray-50 dark:bg-gray-900 py-16 px-4 sm:px-6 lg:px-8">
+            <h2
+                class="section-title text-4xl sm:text-5xl font-extrabold text-center mb-12 text-gray-800 dark:text-white">
+                Stakeholders & Their Needs</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 max-w-7xl mx-auto">
+                <div
+                    class="card bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 p-6 border-t-4 border-red-500 dark:border-red-600">
+                    <h3 class="font-bold text-xl text-gray-900 dark:text-white mb-3">Zomato Leadership & Executives</h3>
+                    <p class="text-gray-700 dark:text-gray-300 text-base leading-relaxed">Concerned with overall
+                        strategic direction, <strong>financial performance</strong> (profitability, revenue growth), <strong>market
+                        share**, long-term sustainability, and investor relations.</p>
                 </div>
-                <div class="card">
-                    <h3 class="font-bold text-xl text-gray-800 mb-2">Product Management & Engineering Leads</h3>
-                    <p class="text-gray-700 text-base">Responsible for defining product roadmaps, translating business requirements into technical specifications, managing development teams, and ensuring technical feasibility and quality.</p>
+                <div
+                    class="card bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 p-6 border-t-4 border-orange-500 dark:border-orange-600">
+                    <h3 class="font-bold text-xl text-gray-900 dark:text-white mb-3">Product Management & Engineering
+                        Leads</h3>
+                    <p class="text-gray-700 dark:text-gray-300 text-base leading-relaxed">Responsible for defining
+                        **product roadmaps**, translating business requirements into **technical specifications**,
+                        managing development teams, and ensuring technical feasibility and quality.</p>
                 </div>
-                <div class="card">
-                    <h3 class="font-bold text-xl text-gray-800 mb-2">Sales & Marketing Teams</h3>
-                    <p class="text-gray-700 text-base">Focused on customer acquisition, retention, brand building, promotional strategies, and revenue generation. They require features that enable effective campaigns and provide insights into market performance.</p>
+                <div
+                    class="card bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 p-6 border-t-4 border-amber-500 dark:border-amber-600">
+                    <h3 class="font-bold text-xl text-gray-900 dark:text-white mb-3">Sales & Marketing Teams</h3>
+                    <p class="text-gray-700 dark:text-gray-300 text-base leading-relaxed">Focused on **customer
+                        acquisition, retention, brand building**, promotional strategies, and revenue generation. They
+                        require features that enable effective campaigns and provide insights into market performance.
+                    </p>
                 </div>
-                <div class="card">
-                    <h3 class="font-bold text-xl text-gray-800 mb-2">Operations & Logistics Teams</h3>
-                    <p class="text-gray-700 text-base">Concerned with the efficiency, scalability, and reliability of delivery operations, restaurant onboarding, and delivery partner management. They need tools for real-time monitoring, issue resolution, and optimization.</p>
+                <div
+                    class="card bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 p-6 border-t-4 border-red-500 dark:border-red-600">
+                    <h3 class="font-bold text-xl text-gray-900 dark:text-white mb-3">Operations & Logistics Teams</h3>
+                    <p class="text-gray-700 dark:text-gray-300 text-base leading-relaxed">Concerned with the
+                        **efficiency, scalability, and reliability** of delivery operations, restaurant onboarding, and
+                        delivery partner management. They need tools for real-time monitoring, issue resolution, and
+                        optimization.</p>
                 </div>
-                <div class="card">
-                    <h3 class="font-bold text-xl text-gray-800 mb-2">Finance & Legal Teams</h3>
-                    <p class="text-gray-700 text-base">Ensure financial compliance, accurate revenue reporting, secure payment processing, commission structures, and adherence to legal and regulatory frameworks.</p>
+                <div
+                    class="card bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 p-6 border-t-4 border-orange-500 dark:border-orange-600">
+                    <h3 class="font-bold text-xl text-gray-900 dark:text-white mb-3">Finance & Legal Teams</h3>
+                    <p class="text-gray-700 dark:text-gray-300 text-base leading-relaxed">Ensure **financial
+                        compliance**, accurate revenue reporting, **secure payment processing**, commission structures,
+                        and adherence to legal and regulatory frameworks.</p>
                 </div>
-                <div class="card">
-                    <h3 class="font-bold text-xl text-gray-800 mb-2">Investors & Shareholders</h3>
-                    <p class="text-gray-700 text-base">Interested in Zomato's financial health, growth trajectory, profitability, and return on investment.</p>
+                <div
+                    class="card bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 p-6 border-t-4 border-amber-500 dark:border-amber-600">
+                    <h3 class="font-bold text-xl text-gray-900 dark:text-white mb-3">Investors & Shareholders</h3>
+                    <p class="text-gray-700 dark:text-gray-300 text-base leading-relaxed">Interested in Zomato's
+                        **financial health, growth trajectory, profitability**, and return on investment.</p>
                 </div>
-                <div class="card">
-                    <h3 class="font-bold text-xl text-gray-800 mb-2">Regulatory Bodies</h3>
-                    <p class="text-gray-700 text-base">Oversee compliance with industry-specific regulations (e.g., food safety, consumer protection) and broader legal frameworks.</p>
+                <div
+                    class="card bg-white dark:bg-gray-800 rounded-lg shadow-md hover:shadow-xl transition-shadow duration-300 p-6 border-t-4 border-red-500 dark:border-red-600">
+                    <h3 class="font-bold text-xl text-gray-900 dark:text-white mb-3">Regulatory Bodies</h3>
+                    <p class="text-gray-700 dark:text-gray-300 text-base leading-relaxed">Oversee **compliance** with
+                        industry-specific regulations (e.g., food safety, consumer protection) and broader legal
+                        frameworks.</p>
                 </div>
             </div>
         </section>
 
-        <!-- Scope of the System Section -->
-        <section id="scope" class="mb-20 pt-24 -mt-24">
-            <h2 class="section-title">Scope of the System</h2>
-            <div class="card max-w-4xl mx-auto">
-                <p class="text-lg leading-relaxed mb-6 text-gray-700">The Zomato platform encompasses a broad range of services designed to create a comprehensive food-tech ecosystem. The primary services and functionalities within the scope of the Zomato system include:</p>
-                <ul class="list-disc list-inside space-y-3 text-gray-700 text-base">
-                    <li><strong>Food Ordering and Delivery:</strong> Core functionality enabling users to browse restaurants, select menu items, place orders, and receive doorstep delivery.</li>
-                    <li><strong>Dining Out Services:</strong> Features for restaurant discovery, detailed menu viewing, ratings, reviews, and table reservations. This also includes event-based monetization through initiatives like Zomaland.</li>
-                    <li><strong>Quick Commerce (Blinkit):</strong> Rapid delivery of groceries and other merchandise from dark stores, typically under 15 minutes.</li>
-                    <li><strong>B2B Supplies (Hyperpure):</strong> Supply of fresh, hygienic, and high-quality food ingredients and kitchen supplies to restaurants and other B2B buyers.</li>
-                    <li><strong>Intercity Delivery (Zomato Legends/Quick):</strong> Premium service for ordering iconic food items from different cities for delivery across India.</li>
-                    <li><strong>Restaurant SaaS Tools:</strong> Premium software services for restaurant partners, including CRM dashboards, order analytics, inventory management, and ad campaign management.</li>
-                    <li><strong>White Label Access:</strong> Services enabling restaurants to develop customized food delivery applications and consultancy for cloud kitchens/expansion.</li>
-                    <li><strong>Zomato Kitchens:</strong> Partnerships for establishing and managing kitchen infrastructure services for selected restaurant operators.</li>
+        <section id="scope"
+            class="mb-20 pt-24 -mt-24 bg-gradient-to-tl from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 py-16 px-4 sm:px-6 lg:px-8">
+            <h2
+                class="section-title text-4xl sm:text-5xl font-extrabold text-center mb-12 text-gray-800 dark:text-white">
+                Scope of the System</h2>
+            <div
+                class="card max-w-4xl mx-auto bg-white dark:bg-gray-800 rounded-xl shadow-xl p-8 sm:p-10 border border-red-100 dark:border-gray-700">
+                <p class="text-lg leading-relaxed mb-8 text-gray-700 dark:text-gray-300">The Zomato platform encompasses
+                    a broad range of services designed to create a **comprehensive food-tech ecosystem**. The primary
+                    services and functionalities within the scope of the Zomato system include:</p>
+                <ul class="list-none space-y-6 text-gray-700 dark:text-gray-300 text-base">
+                    <li class="flex items-start">
+                        <span class="text-red-500 dark:text-red-400 text-2xl mr-3 mt-1">&#10003;</span>
+                        <div>
+                            <strong class="text-gray-900 dark:text-white text-lg block mb-1">Food Ordering and
+                                Delivery:</strong>
+                            Core functionality enabling users to browse restaurants, select menu items, place orders,
+                            and receive doorstep delivery.
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-orange-500 dark:text-orange-400 text-2xl mr-3 mt-1">&#10003;</span>
+                        <div>
+                            <strong class="text-gray-900 dark:text-white text-lg block mb-1">Dining Out
+                                Services:</strong>
+                            Features for restaurant discovery, detailed menu viewing, ratings, reviews, and table
+                            reservations. This also includes event-based monetization through initiatives like Zomaland.
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-amber-500 dark:text-amber-400 text-2xl mr-3 mt-1">&#10003;</span>
+                        <div>
+                            <strong class="text-gray-900 dark:text-white text-lg block mb-1">Quick Commerce
+                                (Blinkit):</strong>
+                            Rapid delivery of groceries and other merchandise from dark stores, typically under 15
+                            minutes.
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-green-500 dark:text-green-400 text-2xl mr-3 mt-1">&#10003;</span>
+                        <div>
+                            <strong class="text-gray-900 dark:text-white text-lg block mb-1">B2B Supplies
+                                (Hyperpure):</strong>
+                            Supply of fresh, hygienic, and high-quality food ingredients and kitchen supplies to
+                            restaurants and other B2B buyers.
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-blue-500 dark:text-blue-400 text-2xl mr-3 mt-1">&#10003;</span>
+                        <div>
+                            <strong class="text-gray-900 dark:text-white text-lg block mb-1">Intercity Delivery (Zomato
+                                Legends/Quick):</strong>
+                            Premium service for ordering iconic food items from different cities for delivery across
+                            India.
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-indigo-500 dark:text-indigo-400 text-2xl mr-3 mt-1">&#10003;</span>
+                        <div>
+                            <strong class="text-gray-900 dark:text-white text-lg block mb-1">Restaurant SaaS
+                                Tools:</strong>
+                            Premium software services for restaurant partners, including CRM dashboards, order
+                            analytics, inventory management, and ad campaign management.
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-purple-500 dark:text-purple-400 text-2xl mr-3 mt-1">&#10003;</span>
+                        <div>
+                            <strong class="text-gray-900 dark:text-white text-lg block mb-1">White Label
+                                Access:</strong>
+                            Services enabling restaurants to develop customized food delivery applications and
+                            consultancy for cloud kitchens/expansion.
+                        </div>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="text-pink-500 dark:text-pink-400 text-2xl mr-3 mt-1">&#10003;</span>
+                        <div>
+                            <strong class="text-gray-900 dark:text-white text-lg block mb-1">Zomato Kitchens:</strong>
+                            Partnerships for establishing and managing kitchen infrastructure services for selected
+                            restaurant operators.
+                        </div>
+                    </li>
                 </ul>
             </div>
         </section>
 
-        <!-- Business Requirements: User Stories Section -->
-        <section id="user-stories" class="mb-20 pt-24 -mt-24">
-            <h2 class="section-title">Business Requirements: User Stories</h2>
-            <div class="space-y-6">
-                <!-- Customer-Facing User Stories -->
-                <div class="accordion-item">
-                    <button class="accordion-header">
+        <section id="user-stories" class="mb-20 pt-24 -mt-24 bg-gray-50 dark:bg-gray-900 py-16 px-4 sm:px-6 lg:px-8">
+            <h2
+                class="section-title text-4xl sm:text-5xl font-extrabold text-center mb-12 text-gray-800 dark:text-white">
+                Business Requirements: User Stories</h2>
+            <div class="space-y-6 max-w-5xl mx-auto">
+                <div
+                    class="accordion-item bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
+                    <button
+                        class="accordion-header flex justify-between items-center w-full py-4 px-6 sm:px-8 font-semibold text-lg sm:text-xl bg-red-500 text-white rounded-t-xl cursor-pointer hover:bg-red-600 transition-colors duration-300">
                         <span>Customer-Facing User Stories</span>
-                        <svg class="accordion-icon w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        <svg class="accordion-icon w-7 h-7 transform transition-transform duration-300" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
+                            </path>
+                        </svg>
                     </button>
-                    <div class="accordion-content hidden">
-                        <h4 class="font-bold text-xl mb-3 text-gray-800">User Registration & Discovery:</h4>
-                        <ul class="list-disc list-inside space-y-2 text-gray-700 text-base mb-6">
-                            <li>As a new customer, I want to easily register and log in using multiple options (e.g., email, social media), so that I can quickly access Zomato's services.</li>
-                            <li>As a customer, I want to search for restaurants by cuisine, location, or dish, and filter results by preferences (e.g., dietary, price), so that I can efficiently find exactly what I'm looking for.</li>
-                            <li>As a customer, I want to receive AI-powered restaurant and dish recommendations, so that I can discover new options tailored to my tastes.</li>
+                    <div
+                        class="accordion-content bg-white dark:bg-gray-800 p-6 sm:p-8 rounded-b-xl border-t-0 max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+                        <h4
+                            class="font-bold text-xl sm:text-2xl mb-4 text-gray-800 dark:text-white border-b border-gray-200 dark:border-gray-700 pb-2">
+                            User Registration & Discovery:</h4>
+                        <ul
+                            class="list-disc list-inside space-y-3 text-gray-700 dark:text-gray-300 text-base sm:text-lg mb-6">
+                            <li>As a new customer, I want to easily register and log in using multiple options (e.g.,
+                                email, social media), so that I can quickly access Zomato's services.</li>
+                            <li>As a customer, I want to search for restaurants by cuisine, location, or dish, and
+                                filter results by preferences (e.g., dietary, price), so that I can efficiently find
+                                exactly what I'm looking for.</li>
+                            <li>As a customer, I want to receive AI-powered restaurant and dish recommendations, so that
+                                I can discover new options tailored to my tastes.</li>
                         </ul>
-                        <h4 class="font-bold text-xl mb-3 text-gray-800">Ordering & Payment:</h4>
-                        <ul class="list-disc list-inside space-y-2 text-gray-700 text-base mb-6">
-                            <li>As a customer, I want to add items to my cart and customize my order (e.g., add notes, modify ingredients), so that I get my meal exactly as I want it.</li>
-                            <li>As a customer, I want to have multiple secure payment options (e.g., UPI, cards, wallets, COD), so that I can complete my order conveniently and safely.</li>
+                        <h4
+                            class="font-bold text-xl sm:text-2xl mb-4 text-gray-800 dark:text-white border-b border-gray-200 dark:border-gray-700 pb-2">
+                            Ordering & Payment:</h4>
+                        <ul
+                            class="list-disc list-inside space-y-3 text-gray-700 dark:text-gray-300 text-base sm:text-lg mb-6">
+                            <li>As a customer, I want to add items to my cart and customize my order (e.g., add notes,
+                                modify ingredients), so that I get my meal exactly as I want it.</li>
+                            <li>As a customer, I want to have multiple secure payment options (e.g., UPI, cards,
+                                wallets, COD), so that I can complete my order conveniently and safely.</li>
                         </ul>
-                        <h4 class="font-bold text-xl mb-3 text-gray-800">Post-Order Experience:</h4>
-                        <ul class="list-disc list-inside space-y-2 text-gray-700 text-base">
-                            <li>As a customer, I want to track my order in real-time on a map, including the delivery partner's location, so that I know exactly when my food will arrive.</li>
-                            <li>As a customer, I want to provide ratings and reviews for restaurants and delivery experiences, so that I can share my feedback and help others make informed choices.</li>
+                        <h4
+                            class="font-bold text-xl sm:text-2xl mb-4 text-gray-800 dark:text-white border-b border-gray-200 dark:border-gray-700 pb-2">
+                            Post-Order Experience:</h4>
+                        <ul
+                            class="list-disc list-inside space-y-3 text-gray-700 dark:text-gray-300 text-base sm:text-lg">
+                            <li>As a customer, I want to track my order in real-time on a map, including the delivery
+                                partner's location, so that I know exactly when my food will arrive.</li>
+                            <li>As a customer, I want to provide ratings and reviews for restaurants and delivery
+                                experiences, so that I can share my feedback and help others make informed choices.</li>
                         </ul>
                     </div>
                 </div>
 
-                <!-- Restaurant Partner User Stories -->
-                <div class="accordion-item">
-                    <button class="accordion-header">
+                <div
+                    class="accordion-item bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
+                    <button
+                        class="accordion-header flex justify-between items-center w-full py-4 px-6 sm:px-8 font-semibold text-lg sm:text-xl bg-orange-500 text-white rounded-t-xl cursor-pointer hover:bg-orange-600 transition-colors duration-300">
                         <span>Restaurant Partner User Stories</span>
-                        <svg class="accordion-icon w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        <svg class="accordion-icon w-7 h-7 transform transition-transform duration-300" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
+                            </path>
+                        </svg>
                     </button>
-                    <div class="accordion-content hidden">
-                        <h4 class="font-bold text-xl mb-3 text-gray-800">Onboarding & Profile Management:</h4>
-                        <ul class="list-disc list-inside space-y-2 text-gray-700 text-base mb-6">
-                            <li>As a restaurant owner, I want to easily onboard my restaurant and manage my profile details (e.g., timings, menu, FSSAI info), so that my business is accurately represented on the platform.</li>
-                            <li>As a restaurant owner, I want to manage my menu items, including adding, editing, and marking items in/out of stock, so that my online menu is always up-to-date.</li>
+                    <div
+                        class="accordion-content bg-white dark:bg-gray-800 p-6 sm:p-8 rounded-b-xl border-t-0 max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+                        <h4
+                            class="font-bold text-xl sm:text-2xl mb-4 text-gray-800 dark:text-white border-b border-gray-200 dark:border-gray-700 pb-2">
+                            Onboarding & Profile Management:</h4>
+                        <ul
+                            class="list-disc list-inside space-y-3 text-gray-700 dark:text-gray-300 text-base sm:text-lg mb-6">
+                            <li>As a restaurant owner, I want to easily onboard my restaurant and manage my profile
+                                details (e.g., timings, menu, FSSAI info), so that my business is accurately represented
+                                on the platform.</li>
+                            <li>As a restaurant owner, I want to manage my menu items, including adding, editing, and
+                                marking items in/out of stock, so that my online menu is always up-to-date.</li>
                         </ul>
-                        <h4 class="font-bold text-xl mb-3 text-gray-800">Order & Business Management:</h4>
-                        <ul class="list-disc list-inside space-y-2 text-gray-700 text-base mb-6">
-                            <li>As a restaurant staff member, I want to receive instant notifications for new orders and efficiently accept/process them, so that I can fulfill customer orders promptly.</li>
-                            <li>As a restaurant owner, I want to access comprehensive business reports (e.g., sales, payouts, customer funnel), so that I can analyze my performance and make data-driven decisions.</li>
-                            <li>As a restaurant owner, I want to create and manage promotional offers and advertisements, so that I can attract more customers and boost sales.</li>
+                        <h4
+                            class="font-bold text-xl sm:text-2xl mb-4 text-gray-800 dark:text-white border-b border-gray-200 dark:border-gray-700 pb-2">
+                            Order & Business Management:</h4>
+                        <ul
+                            class="list-disc list-inside space-y-3 text-gray-700 dark:text-gray-300 text-base sm:text-lg mb-6">
+                            <li>As a restaurant staff member, I want to receive instant notifications for new orders and
+                                efficiently accept/process them, so that I can fulfill customer orders promptly.</li>
+                            <li>As a restaurant owner, I want to access comprehensive business reports (e.g., sales,
+                                payouts, customer funnel), so that I can analyze my performance and make data-driven
+                                decisions.</li>
+                            <li>As a restaurant owner, I want to create and manage promotional offers and
+                                advertisements, so that I can attract more customers and boost sales.</li>
                         </ul>
                     </div>
                 </div>
 
-                <!-- Delivery Partner User Stories -->
-                <div class="accordion-item">
-                    <button class="accordion-header">
+                <div
+                    class="accordion-item bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
+                    <button
+                        class="accordion-header flex justify-between items-center w-full py-4 px-6 sm:px-8 font-semibold text-lg sm:text-xl bg-amber-500 text-white rounded-t-xl cursor-pointer hover:bg-amber-600 transition-colors duration-300">
                         <span>Delivery Partner User Stories</span>
-                        <svg class="accordion-icon w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        <svg class="accordion-icon w-7 h-7 transform transition-transform duration-300" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
+                            </path>
+                        </svg>
                     </button>
-                    <div class="accordion-content hidden">
-                        <h4 class="font-bold text-xl mb-3 text-gray-800">Availability & Order Flow:</h4>
-                        <ul class="list-disc list-inside space-y-2 text-gray-700 text-base mb-6">
-                            <li>As a delivery partner, I want to easily log in and manage my availability, so that I can receive delivery assignments when I'm ready to work.</li>
-                            <li>As a delivery partner, I want to receive clear notifications for new orders and accept/decline them efficiently, so that I can manage my delivery tasks effectively.</li>
+                    <div
+                        class="accordion-content bg-white dark:bg-gray-800 p-6 sm:p-8 rounded-b-xl border-t-0 max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+                        <h4
+                            class="font-bold text-xl sm:text-2xl mb-4 text-gray-800 dark:text-white border-b border-gray-200 dark:border-gray-700 pb-2">
+                            Availability & Order Flow:</h4>
+                        <ul
+                            class="list-disc list-inside space-y-3 text-gray-700 dark:text-gray-300 text-base sm:text-lg mb-6">
+                            <li>As a delivery partner, I want to easily log in and manage my availability, so that I can
+                                receive delivery assignments when I'm ready to work.</li>
+                            <li>As a delivery partner, I want to receive clear notifications for new orders and
+                                accept/decline them efficiently, so that I can manage my delivery tasks effectively.
+                            </li>
                         </ul>
-                        <h4 class="font-bold text-xl mb-3 text-gray-800">Navigation & Support:</h4>
-                        <ul class="list-disc list-inside space-y-2 text-gray-700 text-base mb-6">
-                            <li>As a delivery partner, I want route optimization tools within the app, so that I can find the most efficient path to pick up and deliver orders.</li>
-                            <li>As a delivery partner, I want to track my earnings transparently within the app, so that I can monitor my income.</li>
-                            <li>As a delivery partner, I want in-app chat support and access to emergency services, so that I can quickly resolve issues or get help when needed.</li>
+                        <h4
+                            class="font-bold text-xl sm:text-2xl mb-4 text-gray-800 dark:text-white border-b border-gray-200 dark:border-gray-700 pb-2">
+                            Navigation & Support:</h4>
+                        <ul
+                            class="list-disc list-inside space-y-3 text-gray-700 dark:text-gray-300 text-base sm:text-lg mb-6">
+                            <li>As a delivery partner, I want route optimization tools within the app, so that I can
+                                find the most efficient path to pick up and deliver orders.</li>
+                            <li>As a delivery partner, I want to track my earnings transparently within the app, so that
+                                I can monitor my income.</li>
+                            <li>As a delivery partner, I want in-app chat support and access to emergency services, so
+                                that I can quickly resolve issues or get help when needed.</li>
                         </ul>
                     </div>
                 </div>
 
-                <!-- Platform Administration User Stories -->
-                <div class="accordion-item">
-                    <button class="accordion-header">
+                <div
+                    class="accordion-item bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
+                    <button
+                        class="accordion-header flex justify-between items-center w-full py-4 px-6 sm:px-8 font-semibold text-lg sm:text-xl bg-green-500 text-white rounded-t-xl cursor-pointer hover:bg-green-600 transition-colors duration-300">
                         <span>Platform Administration User Stories</span>
-                        <svg class="accordion-icon w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        <svg class="accordion-icon w-7 h-7 transform transition-transform duration-300" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
+                            </path>
+                        </svg>
                     </button>
-                    <div class="accordion-content hidden">
-                        <h4 class="font-bold text-xl mb-3 text-gray-800">User & Content Management:</h4>
-                        <ul class="list-disc list-inside space-y-2 text-gray-700 text-base mb-6">
-                            <li>As an administrator, I want to manage customer, restaurant, and delivery partner accounts (e.g., activate, suspend, update details), so that I can maintain platform integrity and provide support.</li>
-                            <li>As an administrator, I want to manage restaurant listings, menus, and promotional content across the platform, so that I can ensure accuracy and relevance.</li>
+                    <div
+                        class="accordion-content bg-white dark:bg-gray-800 p-6 sm:p-8 rounded-b-xl border-t-0 max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+                        <h4
+                            class="font-bold text-xl sm:text-2xl mb-4 text-gray-800 dark:text-white border-b border-gray-200 dark:border-gray-700 pb-2">
+                            User & Content Management:</h4>
+                        <ul
+                            class="list-disc list-inside space-y-3 text-gray-700 dark:text-gray-300 text-base sm:text-lg mb-6">
+                            <li>As an administrator, I want to manage customer, restaurant, and delivery partner
+                                accounts (e.g., activate, suspend, update details), so that I can maintain platform
+                                integrity and provide support.</li>
+                            <li>As an administrator, I want to manage restaurant listings, menus, and promotional
+                                content across the platform, so that I can ensure accuracy and relevance.</li>
                         </ul>
-                        <h4 class="font-bold text-xl mb-3 text-gray-800">Monitoring & Reporting:</h4>
-                        <ul class="list-disc list-inside space-y-2 text-gray-700 text-base">
-                            <li>As an operations manager, I want to monitor all live orders and intervene in case of issues, so that I can ensure smooth operations and resolve problems quickly.</li>
-                            <li>As a finance analyst, I want to generate detailed reports on revenue, commissions, and payouts across all business segments, so that I can track financial performance and ensure accurate settlements.</li>
+                        <h4
+                            class="font-bold text-xl sm:text-2xl mb-4 text-gray-800 dark:text-white border-b border-gray-200 dark:border-gray-700 pb-2">
+                            Monitoring & Reporting:</h4>
+                        <ul
+                            class="list-disc list-inside space-y-3 text-gray-700 dark:text-gray-300 text-base sm:text-lg">
+                            <li>As an operations manager, I want to monitor all live orders and intervene in case of
+                                issues, so that I can ensure smooth operations and resolve problems quickly.</li>
+                            <li>As a finance analyst, I want to generate detailed reports on revenue, commissions, and
+                                payouts across all business segments, so that I can track financial performance and
+                                ensure accurate settlements.</li>
                         </ul>
                     </div>
                 </div>
@@ -275,116 +507,209 @@
         </section>
 
         <!-- Requirement Metrics (KPIs) Section -->
-        <section id="kpis" class="mb-20 pt-24 -mt-24">
-            <h2 class="section-title">Requirement Metrics (KPIs)</h2>
-            <div class="space-y-6">
-                <!-- Customer Experience & Engagement Metrics -->
-                <div class="accordion-item">
-                    <button class="accordion-header">
+        <section id="kpis"
+            class="mb-20 pt-24 -mt-24 bg-gradient-to-br from-white to-gray-100 dark:from-gray-950 dark:to-gray-800 py-16 px-4 sm:px-6 lg:px-8">
+            <h2
+                class="section-title text-4xl sm:text-5xl font-extrabold text-center mb-12 text-gray-800 dark:text-white">
+                Requirement Metrics (KPIs)</h2>
+            <div class="space-y-6 max-w-5xl mx-auto">
+                <div
+                    class="accordion-item bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
+                    <button
+                        class="accordion-header flex justify-between items-center w-full py-4 px-6 sm:px-8 font-semibold text-lg sm:text-xl bg-purple-600 text-white rounded-t-xl cursor-pointer hover:bg-purple-700 transition-colors duration-300">
                         <span>Customer Experience & Engagement Metrics</span>
-                        <svg class="accordion-icon w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        <svg class="accordion-icon w-7 h-7 transform transition-transform duration-300" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
+                            </path>
+                        </svg>
                     </button>
-                    <div class="accordion-content hidden">
-                        <ul class="list-disc list-inside space-y-2 text-gray-700 text-base">
-                            <li><strong>Average Monthly Transacting Customers (AMTC):</strong> Indicates the size and activity of the core customer base.</li>
-                            <li><strong>Order Frequency (per customer):</strong> Reflects customer engagement and stickiness.</li>
-                            <li><strong>Customer Retention Rate:</strong> Measures the effectiveness of loyalty programs and overall customer satisfaction.</li>
-                            <li><strong>Net Promoter Score (NPS):</strong> Gauges overall customer satisfaction and loyalty.</li>
-                            <li><strong>Average Order Value (AOV):</strong> Indicates customer spending habits and potential for revenue growth per transaction.</li>
+                    <div
+                        class="accordion-content bg-white dark:bg-gray-800 p-6 sm:p-8 rounded-b-xl border-t-0 max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+                        <ul
+                            class="list-disc list-inside space-y-3 text-gray-700 dark:text-gray-300 text-base sm:text-lg">
+                            <li><strong>Average Monthly Transacting Customers (AMTC):</strong> Indicates the size and
+                                activity of the core customer base.</li>
+                            <li><strong>Order Frequency (per customer):</strong> Reflects customer engagement and
+                                stickiness.</li>
+                            <li><strong>Customer Retention Rate:</strong> Measures the effectiveness of loyalty programs
+                                and overall customer satisfaction.</li>
+                            <li><strong>Net Promoter Score (NPS):</strong> Gauges overall customer satisfaction and
+                                loyalty.</li>
+                            <li><strong>Average Order Value (AOV):</strong> Indicates customer spending habits and
+                                potential for revenue growth per transaction.</li>
                         </ul>
                     </div>
                 </div>
 
-                <!-- Operational Efficiency & Service Quality Metrics -->
-                <div class="accordion-item">
-                    <button class="accordion-header">
+                <div
+                    class="accordion-item bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
+                    <button
+                        class="accordion-header flex justify-between items-center w-full py-4 px-6 sm:px-8 font-semibold text-lg sm:text-xl bg-indigo-600 text-white rounded-t-xl cursor-pointer hover:bg-indigo-700 transition-colors duration-300">
                         <span>Operational Efficiency & Service Quality Metrics</span>
-                        <svg class="accordion-icon w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        <svg class="accordion-icon w-7 h-7 transform transition-transform duration-300" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
+                            </path>
+                        </svg>
                     </button>
-                    <div class="accordion-content hidden">
-                        <ul class="list-disc list-inside space-y-2 text-gray-700 text-base">
-                            <li><strong>Average Delivery Time:</strong> Directly impacts customer satisfaction and quick commerce competitiveness.</li>
-                            <li><strong>Order Fulfillment Rate:</strong> Measures reliability and operational accuracy.</li>
-                            <li><strong>Restaurant Partner Onboarding Time:</strong> Reflects efficiency of partner acquisition processes.</li>
-                            <li><strong>Delivery Partner Utilization Rate:</strong> Measures efficiency of fleet management and earning opportunities for partners.</li>
-                            <li><strong>Customer Support Resolution Time:</strong> Reflects responsiveness and quality of support.</li>
+                    <div
+                        class="accordion-content bg-white dark:bg-gray-800 p-6 sm:p-8 rounded-b-xl border-t-0 max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+                        <ul
+                            class="list-disc list-inside space-y-3 text-gray-700 dark:text-gray-300 text-base sm:text-lg">
+                            <li><strong>Average Delivery Time:</strong> Directly impacts customer satisfaction and quick
+                                commerce competitiveness.</li>
+                            <li><strong>Order Fulfillment Rate:</strong> Measures reliability and operational accuracy.
+                            </li>
+                            <li><strong>Restaurant Partner Onboarding Time:</strong> Reflects efficiency of partner
+                                acquisition processes.</li>
+                            <li><strong>Delivery Partner Utilization Rate:</strong> Measures efficiency of fleet
+                                management and earning opportunities for partners.</li>
+                            <li><strong>Customer Support Resolution Time:</strong> Reflects responsiveness and quality
+                                of support.</li>
                         </ul>
                     </div>
                 </div>
 
-                <!-- Financial Performance & Growth Metrics -->
-                <div class="accordion-item">
-                    <button class="accordion-header">
+                <div
+                    class="accordion-item bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
+                    <button
+                        class="accordion-header flex justify-between items-center w-full py-4 px-6 sm:px-8 font-semibold text-lg sm:text-xl bg-blue-600 text-white rounded-t-xl cursor-pointer hover:bg-blue-700 transition-colors duration-300">
                         <span>Financial Performance & Growth Metrics</span>
-                        <svg class="accordion-icon w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        <svg class="accordion-icon w-7 h-7 transform transition-transform duration-300" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
+                            </path>
+                        </svg>
                     </button>
-                    <div class="accordion-content hidden">
-                        <ul class="list-disc list-inside space-y-2 text-gray-700 text-base">
-                            <li><strong>Gross Order Value (GOV):</strong> Primary indicator of overall business scale and transaction volume.</li>
-                            <li><strong>Adjusted Revenue:</strong> Provides a more accurate picture of core earnings.</li>
-                            <li><strong>Adjusted EBITDA:</strong> Key indicator of the company's ability to generate profit from its operations.</li>
-                            <li><strong>Take Rate (Commission Rate):</strong> Measures the profitability of each transaction.</li>
-                            <li><strong>Blinkit Store Count:</strong> Direct measure of quick commerce expansion progress.</li>
-                            <li><strong>Hyperpure Revenue Growth:</strong> Measures the scaling of the B2B business.</li>
+                    <div
+                        class="accordion-content bg-white dark:bg-gray-800 p-6 sm:p-8 rounded-b-xl border-t-0 max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+                        <ul
+                            class="list-disc list-inside space-y-3 text-gray-700 dark:text-gray-300 text-base sm:text-lg">
+                            <li><strong>Gross Order Value (GOV):</strong> Primary indicator of overall business scale
+                                and transaction volume.</li>
+                            <li><strong>Adjusted Revenue:</strong> Provides a more accurate picture of core earnings.
+                            </li>
+                            <li><strong>Adjusted EBITDA:</strong> Key indicator of the company's ability to generate
+                                profit from its operations.</li>
+                            <li><strong>Take Rate (Commission Rate):</strong> Measures the profitability of each
+                                transaction.</li>
+                            <li><strong>Blinkit Store Count:</strong> Direct measure of quick commerce expansion
+                                progress.</li>
+                            <li><strong>Hyperpure Revenue Growth:</strong> Measures the scaling of the B2B business.
+                            </li>
                         </ul>
                     </div>
                 </div>
 
-                <!-- Sustainability & Social Impact Metrics -->
-                <div class="accordion-item">
-                    <button class="accordion-header">
+                <div
+                    class="accordion-item bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
+                    <button
+                        class="accordion-header flex justify-between items-center w-full py-4 px-6 sm:px-8 font-semibold text-lg sm:text-xl bg-emerald-600 text-white rounded-t-xl cursor-pointer hover:bg-emerald-700 transition-colors duration-300">
                         <span>Sustainability & Social Impact Metrics</span>
-                        <svg class="accordion-icon w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                        <svg class="accordion-icon w-7 h-7 transform transition-transform duration-300" fill="none"
+                            stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7">
+                            </path>
+                        </svg>
                     </button>
-                    <div class="accordion-content hidden">
-                        <ul class="list-disc list-inside space-y-2 text-gray-700 text-base">
-                            <li><strong>Percentage of EV-based Deliveries:</strong> Measures progress towards net-zero emissions.</li>
-                            <li><strong>Plastic Neutrality Achievement:</strong> Reflects commitment to environmental responsibility.</li>
-                            <li><strong>Number of PwD (Persons with Disabilities) Delivery Partners:</strong> Measures progress in inclusive hiring and social impact.</li>
-                            <li><strong>Number of Women in Logistics Roles:</strong> Measures gender diversity in the workforce.</li>
+                    <div
+                        class="accordion-content bg-white dark:bg-gray-800 p-6 sm:p-8 rounded-b-xl border-t-0 max-h-0 overflow-hidden transition-all duration-500 ease-in-out">
+                        <ul
+                            class="list-disc list-inside space-y-3 text-gray-700 dark:text-gray-300 text-base sm:text-lg">
+                            <li><strong>Percentage of EV-based Deliveries:</strong> Measures progress towards net-zero
+                                emissions.</li>
+                            <li><strong>Plastic Neutrality Achievement:</strong> Reflects commitment to environmental
+                                responsibility.</li>
+                            <li><strong>Number of PwD (Persons with Disabilities) Delivery Partners:</strong> Measures
+                                progress in inclusive hiring and social impact.</li>
+                            <li><strong>Number of Women in Logistics Roles:</strong> Measures gender diversity in the
+                                workforce.</li>
                         </ul>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Constraints, Assumptions, and Risks Section -->
-        <section id="risks" class="mb-20 pt-24 -mt-24">
-            <h2 class="section-title">Constraints, Assumptions, & Risks</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-                <!-- Constraints -->
-                <div class="card bg-blue-50 border-blue-200">
-                    <h3 class="subsection-title text-blue-800">Constraints</h3>
-                    <ul class="list-disc list-inside space-y-2 text-gray-700 text-base">
-                        <li>High Delivery Costs</li>
-                        <li>Reliance on Discounts</li>
-                        <li>Intense Competitive Landscape</li>
-                        <li>Operational Scalability Capital Expenditure</li>
-                        <li>Regulatory Framework Evolution</li>
+        <section id="risks"
+            class="mb-20 pt-24 -mt-24 bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-900 dark:to-gray-950 py-16 px-4 sm:px-6 lg:px-8">
+            <h2
+                class="section-title text-4xl sm:text-5xl font-extrabold text-center mb-12 text-gray-800 dark:text-white">
+                Constraints, Assumptions, & Risks</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8 max-w-7xl mx-auto">
+                <div
+                    class="card bg-blue-50 dark:bg-blue-950 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-6 border-t-4 border-blue-500 dark:border-blue-700">
+                    <h3
+                        class="subsection-title text-2xl font-bold text-blue-800 dark:text-blue-300 mb-4 flex items-center">
+                        <svg class="w-8 h-8 mr-3 text-blue-600 dark:text-blue-400" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v3h8z">
+                            </path>
+                        </svg>
+                        Constraints
+                    </h3>
+                    <ul class="list-disc list-inside space-y-3 text-gray-700 dark:text-gray-300 text-base">
+                        <li><strong>High Delivery Costs:</strong> Operational expenses impacting profitability.</li>
+                        <li><strong>Reliance on Discounts:</strong> Potential for unsustainable business model.</li>
+                        <li><strong>Intense Competitive Landscape:</strong> Constant pressure from rivals.</li>
+                        <li><strong>Operational Scalability Capital Expenditure:</strong> Significant investment needed
+                            for expansion.</li>
+                        <li><strong>Regulatory Framework Evolution:</strong> Adapting to changing legal environments.
+                        </li>
                     </ul>
                 </div>
-                <!-- Assumptions -->
-                <div class="card bg-green-50 border-green-200">
-                    <h3 class="subsection-title text-green-800">Assumptions</h3>
-                    <ul class="list-disc list-inside space-y-2 text-gray-700 text-base">
-                        <li>Continued Smartphone and Internet Penetration Growth</li>
-                        <li>Evolving Consumer Preferences Alignment</li>
-                        <li>Stable Economic Conditions</li>
-                        <li>Scalability of Technology Infrastructure</li>
-                        <li>Availability of Delivery Partner Workforce</li>
+                <div
+                    class="card bg-green-50 dark:bg-green-950 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-6 border-t-4 border-green-500 dark:border-green-700">
+                    <h3
+                        class="subsection-title text-2xl font-bold text-green-800 dark:text-green-300 mb-4 flex items-center">
+                        <svg class="w-8 h-8 mr-3 text-green-600 dark:text-green-400" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.007 12.007 0 002.944 12c.036 1.15.294 2.27.765 3.322A11.955 11.955 0 0112 21.056a11.955 11.955 0 018.618-3.04A12.007 12.007 0 0021.056 12c-.036-1.15-.294-2.27-.765-3.322z">
+                            </path>
+                        </svg>
+                        Assumptions
+                    </h3>
+                    <ul class="list-disc list-inside space-y-3 text-gray-700 dark:text-gray-300 text-base">
+                        <li><strong>Continued Smartphone & Internet Penetration Growth:</strong> Expansion of user base.
+                        </li>
+                        <li><strong>Evolving Consumer Preferences Alignment:</strong> Demand for convenience and
+                            variety.</li>
+                        <li><strong>Stable Economic Conditions:</strong> Predictable market for investment and growth.
+                        </li>
+                        <li><strong>Scalability of Technology Infrastructure:</strong> Platform handling increased load.
+                        </li>
+                        <li><strong>Availability of Delivery Partner Workforce:</strong> Sufficient gig workers for
+                            operations.</li>
                     </ul>
                 </div>
-                <!-- Risks -->
-                <div class="card bg-red-50 border-red-200">
-                    <h3 class="subsection-title text-red-800">Risks</h3>
-                    <ul class="list-disc list-inside space-y-2 text-gray-700 text-base">
-                        <li>Food Safety & Quality Incidents</li>
-                        <li>Increased Regulatory Scrutiny & Penalties</li>
-                        <li>Customer Acquisition & Retention Challenges</li>
-                        <li>Delivery Partner Churn & Dissatisfaction</li>
-                        <li>Technological Obsolescence & Competitor Innovation</li>
-                        <li>Cybersecurity Breaches</li>
-                        <li>Economic Downturn Impact</li>
+                <div
+                    class="card bg-red-50 dark:bg-red-950 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 p-6 border-t-4 border-red-500 dark:border-red-700">
+                    <h3
+                        class="subsection-title text-2xl font-bold text-red-800 dark:text-red-300 mb-4 flex items-center">
+                        <svg class="w-8 h-8 mr-3 text-red-600 dark:text-red-400" fill="none" stroke="currentColor"
+                            viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.332 16c-.77 1.333.192 3 1.732 3z">
+                            </path>
+                        </svg>
+                        Risks
+                    </h3>
+                    <ul class="list-disc list-inside space-y-3 text-gray-700 dark:text-gray-300 text-base">
+                        <li><strong>Food Safety & Quality Incidents:</strong> Reputational damage and loss of trust.
+                        </li>
+                        <li><strong>Increased Regulatory Scrutiny & Penalties:</strong> Legal and financial
+                            repercussions.</li>
+                        <li><strong>Customer Acquisition & Retention Challenges:</strong> High marketing costs, user
+                            churn.</li>
+                        <li><strong>Delivery Partner Churn & Dissatisfaction:</strong> Operational disruptions and
+                            higher costs.</li>
+                        <li><strong>Technological Obsolescence & Competitor Innovation:</strong> Loss of market edge.
+                        </li>
+                        <li><strong>Cybersecurity Breaches:</strong> Data theft, financial losses, legal liabilities.
+                        </li>
+                        <li><strong>Economic Downturn Impact:</strong> Reduced consumer spending.</li>
                     </ul>
                 </div>
             </div>
@@ -394,47 +719,36 @@
 
     <!-- Footer -->
     <footer class="bg-gray-900 text-gray-300 p-8 text-center text-sm">
-        <p>&copy; 2025 Zomato BRD Overview. All rights reserved. Designed with <span class="text-red-500">&hearts;</span> and Tailwind CSS.</p>
+        <p>&copy; 2025 Zomato BRD Overview. All rights reserved. Designed with <span
+                class="text-red-500">&hearts;</span> By Ayush Kumar.</p>
     </footer>
 
     <script>
-        // JavaScript for accordion functionality
-        document.addEventListener('DOMContentLoaded', () => {
+        document.addEventListener('DOMContentLoaded', function () {
             const accordionHeaders = document.querySelectorAll('.accordion-header');
 
             accordionHeaders.forEach(header => {
                 header.addEventListener('click', () => {
-                    const accordionContent = header.nextElementSibling;
+                    const accordionItem = header.closest('.accordion-item');
+                    const accordionContent = accordionItem.querySelector('.accordion-content');
                     const accordionIcon = header.querySelector('.accordion-icon');
 
-                    // Toggle visibility of the content
-                    accordionContent.classList.toggle('hidden');
-                    // Rotate the icon
-                    accordionIcon.classList.toggle('rotate');
-                });
-            });
+                    // Toggle 'active' class on the item
+                    accordionItem.classList.toggle('active');
 
-            // Smooth scrolling for navigation links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
+                    // Toggle icon rotation
+                    accordionIcon.classList.toggle('rotate-180');
 
-                    const targetId = this.getAttribute('href');
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        // Calculate offset for sticky header
-                        const headerOffset = document.querySelector('header').offsetHeight;
-                        const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
-                        const offsetPosition = elementPosition - headerOffset;
-
-                        window.scrollTo({
-                            top: offsetPosition,
-                            behavior: "smooth"
-                        });
+                    // Toggle content visibility and height for smooth animation
+                    if (accordionContent.style.maxHeight === '0px' || accordionContent.style.maxHeight === '') {
+                        accordionContent.style.maxHeight = accordionContent.scrollHeight + 'px';
+                    } else {
+                        accordionContent.style.maxHeight = '0px';
                     }
                 });
             });
         });
     </script>
 </body>
+
 </html>
