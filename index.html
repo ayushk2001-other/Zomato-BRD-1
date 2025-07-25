@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zomato: The Food-Tech Ecosystem Infographic</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        .flowchart-arrow {
+            position: relative;
+            width: 100%;
+            height: 2px;
+            background-color: #118AB2;
+            margin: 20px 0;
+        }
+        .flowchart-arrow::after {
+            content: '';
+            position: absolute;
+            right: -1px;
+            top: -4px;
+            width: 0;
+            height: 0;
+            border-top: 5px solid transparent;
+            border-bottom: 5px solid transparent;
+            border-left: 10px solid #118AB2;
+        }
+        .flowchart-arrow-vertical {
+            position: relative;
+            width: 2px;
+            height: 40px;
+            background-color: #118AB2;
+            margin: 0 auto;
+        }
+        .flowchart-arrow-vertical::after {
+            content: '';
+            position: absolute;
+            bottom: -1px;
+            left: -4px;
+            width: 0;
+            height: 0;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            border-top: 10px solid #118AB2;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <div class="container mx-auto p-4 md:p-8">
+
+        <header class="text-center mb-12">
+            <h1 class="text-4xl md:text-6xl font-black text-[#073B4C] mb-2">Zomato: The Food-Tech Ecosystem</h1>
+            <p class="text-lg md:text-xl text-[#118AB2] max-w-3xl mx-auto">From a restaurant directory to a diversified powerhouse, discover the data behind Zomato's strategic evolution and market dominance.</p>
+        </header>
+
+        <section id="kpis" class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 text-center">
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <p class="text-lg font-semibold text-[#118AB2]">FY25 Revenue</p>
+                <p class="text-5xl font-extrabold text-[#073B4C]">₹9,418 Cr</p>
+                <p class="text-sm text-gray-500">(US$1.1 Billion)</p>
+            </div>
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <p class="text-lg font-semibold text-[#06D6A0]">FY24 Net Profit</p>
+                <p class="text-5xl font-extrabold text-[#073B4C]">₹351 Cr</p>
+                <p class="text-sm text-gray-500">A major turnaround from FY23 loss</p>
+            </div>
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <p class="text-lg font-semibold text-[#FF6B6B]">Market Share (Q1 FY25)</p>
+                <p class="text-5xl font-extrabold text-[#073B4C]">58%</p>
+                <p class="text-sm text-gray-500">Leading the Indian food delivery market</p>
+            </div>
+        </section>
+
+        <section id="segments" class="mb-16">
+            <div class="bg-white rounded-lg shadow-md p-6 md:p-8">
+                <h2 class="text-3xl font-bold text-[#073B4C] mb-4 text-center">The Zomato Universe: A Diversified Powerhouse</h2>
+                <p class="text-gray-600 mb-8 max-w-4xl mx-auto text-center">Zomato has strategically evolved from a pure food delivery platform into an integrated ecosystem. This diversification into Quick Commerce (Blinkit) and B2B Supplies (Hyperpure) creates multiple revenue streams, reduces reliance on a single segment, and builds a powerful competitive moat. This chart visualizes the scale of each key business segment by its Gross Order Value (GOV) in FY24.</p>
+                <div class="chart-container h-96 md:h-[450px]">
+                    <canvas id="segmentsChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section id="market-share" class="grid grid-cols-1 md:grid-cols-5 gap-8 mb-16">
+            <div class="md:col-span-2 bg-white rounded-lg shadow-md p-6 md:p-8 flex flex-col justify-center">
+                <h2 class="text-3xl font-bold text-[#073B4C] mb-4 text-center">Dominating the Duopoly</h2>
+                <p class="text-gray-600 mb-6 text-center">In the highly competitive Indian food delivery market, Zomato has successfully captured a majority market share, establishing itself as the clear leader against its primary rival, Swiggy.</p>
+                <div class="chart-container h-64 md:h-72">
+                    <canvas id="marketShareChart"></canvas>
+                </div>
+            </div>
+            <div class="md:col-span-3 bg-white rounded-lg shadow-md p-6 md:p-8">
+                <h2 class="text-3xl font-bold text-[#073B4C] mb-4 text-center">The Market Share Reversal</h2>
+                <p class="text-gray-600 mb-6 text-center">Zomato's rise to leadership is a story of strategic execution. While Swiggy held a dominant position in 2018, Zomato's focus on innovation, user experience, and diversification has steadily shifted the balance of power, culminating in its current market leadership.</p>
+                <div class="chart-container h-80">
+                    <canvas id="marketTrendChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section id="ecosystem" class="mb-16">
+            <div class="bg-white rounded-lg shadow-md p-6 md:p-8">
+                <h2 class="text-3xl font-bold text-[#073B4C] mb-4 text-center">The Engine Room: A Virtuous Ecosystem</h2>
+                <p class="text-gray-600 mb-8 max-w-4xl mx-auto text-center">Zomato's success is built on a powerful multi-sided platform that creates a self-reinforcing cycle. The growth in one stakeholder group directly enhances the value for the others, creating a robust network effect that is difficult for competitors to replicate.</p>
+                <div class="flex flex-col md:flex-row justify-around items-center text-center gap-4">
+                    <div class="flex flex-col items-center">
+                        <div class="bg-[#FFD166] text-[#073B4C] rounded-full w-32 h-32 flex items-center justify-center text-6xl font-bold">🧑‍🍳</div>
+                        <h3 class="text-xl font-bold mt-4 text-[#073B4C]">Restaurant Partners</h3>
+                        <p class="text-gray-600 max-w-xs">Gain visibility, new customers, and business management tools.</p>
+                    </div>
+                    <div class="hidden md:block">
+                        <div class="flowchart-arrow"></div>
+                        <p class="text-sm text-[#118AB2] -mt-4">Orders & Revenue</p>
+                    </div>
+                     <div class="md:hidden">
+                        <div class="flowchart-arrow-vertical"></div>
+                         <p class="text-sm text-[#118AB2] my-2">Orders & Revenue</p>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="bg-[#FF6B6B] text-white rounded-full w-32 h-32 flex items-center justify-center text-6xl font-bold">📱</div>
+                        <h3 class="text-xl font-bold mt-4 text-[#073B4C]">Customers</h3>
+                        <p class="text-gray-600 max-w-xs">Enjoy convenience, choice, and real-time tracking.</p>
+                    </div>
+                     <div class="hidden md:block">
+                        <div class="flowchart-arrow"></div>
+                        <p class="text-sm text-[#118AB2] -mt-4">Deliveries & Service</p>
+                    </div>
+                     <div class="md:hidden">
+                        <div class="flowchart-arrow-vertical"></div>
+                         <p class="text-sm text-[#118AB2] my-2">Deliveries & Service</p>
+                    </div>
+                    <div class="flex flex-col items-center">
+                        <div class="bg-[#06D6A0] text-white rounded-full w-32 h-32 flex items-center justify-center text-6xl font-bold">🛵</div>
+                        <h3 class="text-xl font-bold mt-4 text-[#073B4C]">Delivery Partners</h3>
+                        <p class="text-gray-600 max-w-xs">Access flexible earning opportunities and well-being support.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="profitability" class="mb-16">
+             <div class="bg-white rounded-lg shadow-md p-6 md:p-8">
+                <h2 class="text-3xl font-bold text-[#073B4C] mb-4 text-center">The Road to Profitability</h2>
+                <p class="text-gray-600 mb-8 max-w-4xl mx-auto text-center">Demonstrating mature and disciplined strategy, Zomato shifted its focus from "growth-at-all-costs" to sustainable profitability. This pivot, which included rationalizing international operations, resulted in a dramatic financial turnaround from a significant loss in FY23 to a solid profit in FY24.</p>
+                <div class="chart-container h-80">
+                    <canvas id="profitabilityChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <section id="future" class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
+            <div class="bg-white rounded-lg shadow-md p-6 md:p-8">
+                <h2 class="text-3xl font-bold text-[#073B4C] mb-4 text-center">Future Forward: Aggressive Expansion</h2>
+                 <p class="text-gray-600 mb-6 text-center">Zomato is not resting on its laurels. The company has laid out ambitious expansion plans for its high-growth segments, signaling a long-term vision for comprehensive market dominance in the food and lifestyle ecosystem.</p>
+                <div class="space-y-6 text-center">
+                    <div>
+                        <p class="text-lg font-semibold text-[#118AB2]">Blinkit Store Target</p>
+                        <p class="text-6xl font-extrabold text-[#073B4C]">2,000</p>
+                        <p class="text-md text-gray-500">by December 2025</p>
+                    </div>
+                    <div>
+                        <p class="text-lg font-semibold text-[#118AB2]">"Going-Out" Annual NOV Goal</p>
+                        <p class="text-6xl font-extrabold text-[#073B4C]">$3B</p>
+                        <p class="text-md text-gray-500">within the next five years</p>
+                    </div>
+                </div>
+            </div>
+            <div class="bg-white rounded-lg shadow-md p-6 md:p-8">
+                <h2 class="text-3xl font-bold text-[#073B4C] mb-4 text-center">Commitment to Sustainability</h2>
+                <p class="text-gray-600 mb-6 text-center">Zomato is actively integrating ambitious Environmental, Social, and Governance (ESG) goals into its business, enhancing its brand reputation and appealing to conscious consumers and investors.</p>
+                <div class="chart-container h-80">
+                    <canvas id="esgChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <script>
+        const energeticPlayfulPalette = {
+            red: '#FF6B6B',
+            yellow: '#FFD166',
+            green: '#06D6A0',
+            blue: '#118AB2',
+            darkBlue: '#073B4C'
+        };
+
+        const chartTooltipConfig = {
+            plugins: {
+                tooltip: {
+                    callbacks: {
+                        title: function(tooltipItems) {
+                            const item = tooltipItems[0];
+                            let label = item.chart.data.labels[item.dataIndex];
+                            if (Array.isArray(label)) {
+                                return label.join(' ');
+                            }
+                            return label;
+                        }
+                    }
+                },
+                legend: {
+                    labels: {
+                        color: energeticPlayfulPalette.darkBlue,
+                        font: {
+                            size: 14
+                        }
+                    }
+                }
+            }
+        };
+
+        function wrapLabel(str, maxWidth) {
+            if (str.length <= maxWidth) {
+                return str;
+            }
+            const words = str.split(' ');
+            const lines = [];
+            let currentLine = '';
+            for (const word of words) {
+                if ((currentLine + word).length > maxWidth && currentLine.length > 0) {
+                    lines.push(currentLine.trim());
+                    currentLine = '';
+                }
+                currentLine += word + ' ';
+            }
+            lines.push(currentLine.trim());
+            return lines;
+        }
+
+        const segmentsCtx = document.getElementById('segmentsChart').getContext('2d');
+        new Chart(segmentsCtx, {
+            type: 'bar',
+            data: {
+                labels: ['Food Delivery', 'Quick Commerce (Blinkit)', 'B2B Supplies (Hyperpure)'],
+                datasets: [{
+                    label: 'Gross Order Value (GOV) in FY24 (in ₹ Crore)',
+                    data: [32224, 12469, 3172],
+                    backgroundColor: [
+                        energeticPlayfulPalette.red,
+                        energeticPlayfulPalette.yellow,
+                        energeticPlayfulPalette.green
+                    ],
+                    borderColor: energeticPlayfulPalette.darkBlue,
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                ...chartTooltipConfig,
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        ticks: {
+                            color: energeticPlayfulPalette.darkBlue,
+                            callback: function(value) {
+                                return '₹' + (value / 1000) + 'k';
+                            }
+                        }
+                    },
+                    y: {
+                       ticks: {
+                            color: energeticPlayfulPalette.darkBlue
+                        }
+                    }
+                }
+            }
+        });
+
+        const marketShareCtx = document.getElementById('marketShareChart').getContext('2d');
+        new Chart(marketShareCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Zomato', 'Swiggy'],
+                datasets: [{
+                    data: [58, 42],
+                    backgroundColor: [
+                        energeticPlayfulPalette.red,
+                        energeticPlayfulPalette.blue
+                    ],
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                ...chartTooltipConfig,
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '60%',
+            }
+        });
+
+        const marketTrendCtx = document.getElementById('marketTrendChart').getContext('2d');
+        new Chart(marketTrendCtx, {
+            type: 'line',
+            data: {
+                labels: ['2018', '2020', '2022', 'Q1 FY25'],
+                datasets: [{
+                    label: 'Zomato',
+                    data: [38.8, 45, 50, 58],
+                    borderColor: energeticPlayfulPalette.red,
+                    backgroundColor: 'rgba(255, 107, 107, 0.2)',
+                    fill: true,
+                    tension: 0.3
+                }, {
+                    label: 'Swiggy',
+                    data: [61.2, 55, 50, 42],
+                    borderColor: energeticPlayfulPalette.blue,
+                    backgroundColor: 'rgba(17, 138, 178, 0.2)',
+                    fill: true,
+                    tension: 0.3
+                }]
+            },
+            options: {
+                ...chartTooltipConfig,
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        max: 70,
+                        ticks: {
+                            callback: function(value) {
+                                return value + '%'
+                            },
+                            color: energeticPlayfulPalette.darkBlue
+                        }
+                    },
+                    x: {
+                       ticks: {
+                            color: energeticPlayfulPalette.darkBlue
+                        }
+                    }
+                }
+            }
+        });
+
+        const profitabilityCtx = document.getElementById('profitabilityChart').getContext('2d');
+        new Chart(profitabilityCtx, {
+            type: 'bar',
+            data: {
+                labels: ['FY23', 'FY24'],
+                datasets: [{
+                    label: 'Net Profit/Loss (in ₹ Crore)',
+                    data: [-917, 351],
+                    backgroundColor: (context) => {
+                        const value = context.dataset.data[context.dataIndex];
+                        return value < 0 ? energeticPlayfulPalette.red : energeticPlayfulPalette.green;
+                    },
+                    borderColor: energeticPlayfulPalette.darkBlue,
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                ...chartTooltipConfig,
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    y: {
+                        ticks: {
+                            color: energeticPlayfulPalette.darkBlue,
+                            callback: function(value) {
+                                return '₹' + value + ' Cr';
+                            }
+                        }
+                    },
+                    x: {
+                       ticks: {
+                            color: energeticPlayfulPalette.darkBlue
+                        }
+                    }
+                }
+            }
+        });
+
+        const esgCtx = document.getElementById('esgChart').getContext('2d');
+        const esgLabels = [
+            'EV Delivery Partners (in thousands)',
+            wrapLabel('Plastic Waste Recycled (in thousands MT)', 16),
+            wrapLabel('Persons with Disabilities Onboarded (in thousands)', 16),
+            wrapLabel('Women in Logistics (in thousands)', 16),
+            wrapLabel('First Responders Trained (in thousands)', 16)
+        ];
+        new Chart(esgCtx, {
+            type: 'radar',
+            data: {
+                labels: esgLabels,
+                datasets: [{
+                    label: 'ESG Achievements (Normalized)',
+                    data: [51, 45, 2.1, 6.15, 52.14],
+                    backgroundColor: 'rgba(6, 214, 160, 0.2)',
+                    borderColor: energeticPlayfulPalette.green,
+                    pointBackgroundColor: energeticPlayfulPalette.green,
+                    pointBorderColor: '#fff',
+                    pointHoverBackgroundColor: '#fff',
+                    pointHoverBorderColor: energeticPlayfulPalette.green
+                }]
+            },
+            options: {
+                ...chartTooltipConfig,
+                responsive: true,
+                maintainAspectRatio: false,
+                scales: {
+                    r: {
+                        angleLines: {
+                            color: 'rgba(7, 59, 76, 0.2)'
+                        },
+                        grid: {
+                            color: 'rgba(7, 59, 76, 0.2)'
+                        },
+                        pointLabels: {
+                            color: energeticPlayfulPalette.darkBlue,
+                            font: {
+                                size: 11
+                            }
+                        },
+                        ticks: {
+                            backdropColor: 'transparent',
+                            color: energeticPlayfulPalette.darkBlue
+                        }
+                    }
+                }
+            }
+        });
+
+    </script>
+</body>
+</html>
