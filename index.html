@@ -3,448 +3,420 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zomato: The Food-Tech Ecosystem Infographic</title>
+    <title>Zomato BRD Overview</title>
+    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+            background-color: #f8fafc; /* Light blue-gray background */
+            color: #333;
         }
-        .chart-container {
-            position: relative;
-            width: 100%;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            height: 300px;
-            max-height: 400px;
+        .section-title {
+            @apply text-4xl font-bold text-center mb-10 text-red-600;
         }
-        @media (min-width: 768px) {
-            .chart-container {
-                height: 350px;
-            }
+        .subsection-title {
+            @apply text-2xl font-semibold mb-6 text-gray-800;
         }
-        .flowchart-arrow {
-            position: relative;
-            width: 100%;
-            height: 2px;
-            background-color: #118AB2;
-            margin: 20px 0;
+        .card {
+            @apply bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300;
         }
-        .flowchart-arrow::after {
-            content: '';
-            position: absolute;
-            right: -1px;
-            top: -4px;
-            width: 0;
-            height: 0;
-            border-top: 5px solid transparent;
-            border-bottom: 5px solid transparent;
-            border-left: 10px solid #118AB2;
+        .accordion-header {
+            @apply flex justify-between items-center w-full p-4 text-left font-medium text-lg text-gray-700 bg-gray-50 hover:bg-gray-100 rounded-md cursor-pointer transition-colors duration-200;
         }
-        .flowchart-arrow-vertical {
-            position: relative;
-            width: 2px;
-            height: 40px;
-            background-color: #118AB2;
-            margin: 0 auto;
+        .accordion-content {
+            @apply p-4 bg-white border border-gray-200 rounded-b-md;
         }
-        .flowchart-arrow-vertical::after {
-            content: '';
-            position: absolute;
-            bottom: -1px;
-            left: -4px;
-            width: 0;
-            height: 0;
-            border-left: 5px solid transparent;
-            border-right: 5px solid transparent;
-            border-top: 10px solid #118AB2;
+        .accordion-icon {
+            @apply transform transition-transform duration-200;
+        }
+        .accordion-icon.rotate {
+            @apply rotate-180;
+        }
+        /* Custom scrollbar for better aesthetics */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #ef4444; /* Zomato red */
+            border-radius: 10px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #dc2626; /* Darker red on hover */
         }
     </style>
 </head>
-<body class="bg-gray-50 text-gray-800">
+<body class="min-h-screen flex flex-col">
 
-    <div class="container mx-auto p-4 md:p-8">
+    <!-- Sticky Header Navigation -->
+    <header class="bg-red-600 text-white p-4 shadow-lg sticky top-0 z-50">
+        <nav class="container mx-auto flex flex-wrap justify-center md:justify-between items-center">
+            <h1 class="text-3xl font-bold mb-2 md:mb-0">Zomato BRD</h1>
+            <ul class="flex flex-wrap justify-center gap-4 md:gap-6 text-lg">
+                <li><a href="#overview" class="hover:text-red-200 transition-colors duration-200">Overview</a></li>
+                <li><a href="#goals" class="hover:text-red-200 transition-colors duration-200">Goals</a></li>
+                <li><a href="#stakeholders" class="hover:text-red-200 transition-colors duration-200">Stakeholders</a></li>
+                <li><a href="#scope" class="hover:text-red-200 transition-colors duration-200">Scope</a></li>
+                <li><a href="#user-stories" class="hover:text-red-200 transition-colors duration-200">User Stories</a></li>
+                <li><a href="#kpis" class="hover:text-red-200 transition-colors duration-200">KPIs</a></li>
+                <li><a href="#risks" class="hover:text-red-200 transition-colors duration-200">Risks</a></li>
+            </ul>
+        </nav>
+    </header>
 
-        <header class="text-center mb-12">
-            <h1 class="text-4xl md:text-6xl font-black text-[#073B4C] mb-2">Zomato: The Food-Tech Ecosystem</h1>
-            <p class="text-lg md:text-xl text-[#118AB2] max-w-3xl mx-auto">From a restaurant directory to a diversified powerhouse, discover the data behind Zomato's strategic evolution and market dominance.</p>
-        </header>
+    <!-- Main Content Area -->
+    <main class="flex-grow container mx-auto p-6 md:p-10">
 
-        <section id="kpis" class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16 text-center">
-            <div class="bg-white rounded-lg shadow-md p-6">
-                <p class="text-lg font-semibold text-[#118AB2]">FY25 Revenue</p>
-                <p class="text-5xl font-extrabold text-[#073B4C]">₹9,418 Cr</p>
-                <p class="text-sm text-gray-500">(US$1.1 Billion)</p>
-            </div>
-            <div class="bg-white rounded-lg shadow-md p-6">
-                <p class="text-lg font-semibold text-[#06D6A0]">FY24 Net Profit</p>
-                <p class="text-5xl font-extrabold text-[#073B4C]">₹351 Cr</p>
-                <p class="text-sm text-gray-500">A major turnaround from FY23 loss</p>
-            </div>
-            <div class="bg-white rounded-lg shadow-md p-6">
-                <p class="text-lg font-semibold text-[#FF6B6B]">Market Share (Q1 FY25)</p>
-                <p class="text-5xl font-extrabold text-[#073B4C]">58%</p>
-                <p class="text-sm text-gray-500">Leading the Indian food delivery market</p>
-            </div>
-        </section>
-
-        <section id="segments" class="mb-16">
-            <div class="bg-white rounded-lg shadow-md p-6 md:p-8">
-                <h2 class="text-3xl font-bold text-[#073B4C] mb-4 text-center">The Zomato Universe: A Diversified Powerhouse</h2>
-                <p class="text-gray-600 mb-8 max-w-4xl mx-auto text-center">Zomato has strategically evolved from a pure food delivery platform into an integrated ecosystem. This diversification into Quick Commerce (Blinkit) and B2B Supplies (Hyperpure) creates multiple revenue streams, reduces reliance on a single segment, and builds a powerful competitive moat. This chart visualizes the scale of each key business segment by its Gross Order Value (GOV) in FY24.</p>
-                <div class="chart-container h-96 md:h-[450px]">
-                    <canvas id="segmentsChart"></canvas>
-                </div>
+        <!-- Project Overview Section -->
+        <section id="overview" class="mb-16 pt-20 -mt-20">
+            <h2 class="section-title">Project Overview</h2>
+            <div class="card max-w-3xl mx-auto text-lg leading-relaxed">
+                <p>The Zomato Business Requirement Document outlines the comprehensive needs for the continued evolution and strategic expansion of Zomato's integrated food-tech ecosystem, encompassing its core food delivery, dining-out services, quick commerce (Blinkit), and B2B restaurant supplies (Hyperpure). This document serves as a foundational guide for all stakeholders, detailing the functional and non-functional requirements necessary to achieve Zomato's overarching business goals of sustainable profitability, enhanced market dominance, and the integration of advanced technologies and sustainability initiatives across its diverse service offerings.</p>
             </div>
         </section>
 
-        <section id="market-share" class="grid grid-cols-1 md:grid-cols-5 gap-8 mb-16">
-            <div class="md:col-span-2 bg-white rounded-lg shadow-md p-6 md:p-8 flex flex-col justify-center">
-                <h2 class="text-3xl font-bold text-[#073B4C] mb-4 text-center">Dominating the Duopoly</h2>
-                <p class="text-gray-600 mb-6 text-center">In the highly competitive Indian food delivery market, Zomato has successfully captured a majority market share, establishing itself as the clear leader against its primary rival, Swiggy.</p>
-                <div class="chart-container h-64 md:h-72">
-                    <canvas id="marketShareChart"></canvas>
+        <!-- Business Goals and Objectives Section -->
+        <section id="goals" class="mb-16 pt-20 -mt-20">
+            <h2 class="section-title">Business Goals & Objectives</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="card">
+                    <h3 class="subsection-title">Overall Strategic Goals</h3>
+                    <p class="text-gray-700 leading-relaxed">The overarching objective is to achieve meaningful scale and sustained profits across all key business segments. This includes a deliberate shift from a growth-at-all-costs strategy to prioritizing profitability, as evidenced by the company reporting a profit of INR 351 crore in FY24, a significant turnaround from a loss of INR 917 crore in FY23. The company aims to improve unit economics through dynamic pricing models and cost optimization strategies to enhance profit margins per transaction.</p>
                 </div>
-            </div>
-            <div class="md:col-span-3 bg-white rounded-lg shadow-md p-6 md:p-8">
-                <h2 class="text-3xl font-bold text-[#073B4C] mb-4 text-center">The Market Share Reversal</h2>
-                <p class="text-gray-600 mb-6 text-center">Zomato's rise to leadership is a story of strategic execution. While Swiggy held a dominant position in 2018, Zomato's focus on innovation, user experience, and diversification has steadily shifted the balance of power, culminating in its current market leadership.</p>
-                <div class="chart-container h-80">
-                    <canvas id="marketTrendChart"></canvas>
+                <div class="card">
+                    <h3 class="subsection-title">Segment-Specific Goals</h3>
+                    <ul class="list-disc list-inside space-y-2 text-gray-700">
+                        <li><strong>Food Delivery:</strong> Maintain stability and ensure continued growth, leveraging the large runway for expansion in India.</li>
+                        <li><strong>Quick Commerce (Blinkit):</strong> Achieve aggressive expansion, aiming for 2,000 stores by December 2025, with visibility for further expansion to 3,000 stores, to significantly increase its addressable market and cross-leverage the existing customer base and delivery fleet.</li>
+                        <li><strong>B2B Supplies (Hyperpure):</strong> Drive strong adoption and growth, with the vision for this business to become as large as or even larger than the food delivery business due to its larger addressable market.</li>
+                        <li><strong>Going-out (Dining-out & Ticketing):</strong> Scale to $3 billion in annual topline (Net Order Value) with $150 million of Adjusted EBITDA over the next five years, focusing on premium customer base and diverse use cases.</li>
+                    </ul>
                 </div>
             </div>
         </section>
 
-        <section id="ecosystem" class="mb-16">
-            <div class="bg-white rounded-lg shadow-md p-6 md:p-8">
-                <h2 class="text-3xl font-bold text-[#073B4C] mb-4 text-center">The Engine Room: A Virtuous Ecosystem</h2>
-                <p class="text-gray-600 mb-8 max-w-4xl mx-auto text-center">Zomato's success is built on a powerful multi-sided platform that creates a self-reinforcing cycle. The growth in one stakeholder group directly enhances the value for the others, creating a robust network effect that is difficult for competitors to replicate.</p>
-                <div class="flex flex-col md:flex-row justify-around items-center text-center gap-4">
-                    <div class="flex flex-col items-center">
-                        <div class="bg-[#FFD166] text-[#073B4C] rounded-full w-32 h-32 flex items-center justify-center text-6xl font-bold">🧑‍🍳</div>
-                        <h3 class="text-xl font-bold mt-4 text-[#073B4C]">Restaurant Partners</h3>
-                        <p class="text-gray-600 max-w-xs">Gain visibility, new customers, and business management tools.</p>
+        <!-- Stakeholders and Their Needs Section -->
+        <section id="stakeholders" class="mb-16 pt-20 -mt-20">
+            <h2 class="section-title">Stakeholders & Their Needs</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="card">
+                    <h3 class="font-semibold text-xl text-gray-800 mb-2">Zomato Leadership & Executives</h3>
+                    <p class="text-gray-700">Concerned with overall strategic direction, financial performance (profitability, revenue growth), market share, long-term sustainability, and investor relations.</p>
+                </div>
+                <div class="card">
+                    <h3 class="font-semibold text-xl text-gray-800 mb-2">Product Management & Engineering Leads</h3>
+                    <p class="text-gray-700">Responsible for defining product roadmaps, translating business requirements into technical specifications, managing development teams, and ensuring technical feasibility and quality.</p>
+                </div>
+                <div class="card">
+                    <h3 class="font-semibold text-xl text-gray-800 mb-2">Sales & Marketing Teams</h3>
+                    <p class="text-gray-700">Focused on customer acquisition, retention, brand building, promotional strategies, and revenue generation. They require features that enable effective campaigns and provide insights into market performance.</p>
+                </div>
+                <div class="card">
+                    <h3 class="font-semibold text-xl text-gray-800 mb-2">Operations & Logistics Teams</h3>
+                    <p class="text-gray-700">Concerned with the efficiency, scalability, and reliability of delivery operations, restaurant onboarding, and delivery partner management. They need tools for real-time monitoring, issue resolution, and optimization.</p>
+                </div>
+                <div class="card">
+                    <h3 class="font-semibold text-xl text-gray-800 mb-2">Finance & Legal Teams</h3>
+                    <p class="text-gray-700">Ensure financial compliance, accurate revenue reporting, secure payment processing, commission structures, and adherence to legal and regulatory frameworks.</p>
+                </div>
+                <div class="card">
+                    <h3 class="font-semibold text-xl text-gray-800 mb-2">Investors & Shareholders</h3>
+                    <p class="text-gray-700">Interested in Zomato's financial health, growth trajectory, profitability, and return on investment.</p>
+                </div>
+                <div class="card">
+                    <h3 class="font-semibold text-xl text-gray-800 mb-2">Regulatory Bodies</h3>
+                    <p class="text-gray-700">Oversee compliance with industry-specific regulations (e.g., food safety, consumer protection) and broader legal frameworks.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Scope of the System Section -->
+        <section id="scope" class="mb-16 pt-20 -mt-20">
+            <h2 class="section-title">Scope of the System</h2>
+            <div class="card max-w-3xl mx-auto">
+                <p class="text-lg leading-relaxed mb-4">The Zomato platform encompasses a broad range of services designed to create a comprehensive food-tech ecosystem. The primary services and functionalities within the scope of the Zomato system include:</p>
+                <ul class="list-disc list-inside space-y-2 text-gray-700">
+                    <li><strong>Food Ordering and Delivery:</strong> Core functionality enabling users to browse restaurants, select menu items, place orders, and receive doorstep delivery.</li>
+                    <li><strong>Dining Out Services:</strong> Features for restaurant discovery, detailed menu viewing, ratings, reviews, and table reservations. This also includes event-based monetization through initiatives like Zomaland.</li>
+                    <li><strong>Quick Commerce (Blinkit):</strong> Rapid delivery of groceries and other merchandise from dark stores, typically under 15 minutes.</li>
+                    <li><strong>B2B Supplies (Hyperpure):</strong> Supply of fresh, hygienic, and high-quality food ingredients and kitchen supplies to restaurants and other B2B buyers.</li>
+                    <li><strong>Intercity Delivery (Zomato Legends/Quick):</strong> Premium service for ordering iconic food items from different cities for delivery across India.</li>
+                    <li><strong>Restaurant SaaS Tools:</strong> Premium software services for restaurant partners, including CRM dashboards, order analytics, inventory management, and ad campaign management.</li>
+                    <li><strong>White Label Access:</strong> Services enabling restaurants to develop customized food delivery applications and consultancy for cloud kitchens/expansion.</li>
+                    <li><strong>Zomato Kitchens:</strong> Partnerships for establishing and managing kitchen infrastructure services for selected restaurant operators.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Business Requirements: User Stories Section -->
+        <section id="user-stories" class="mb-16 pt-20 -mt-20">
+            <h2 class="section-title">Business Requirements: User Stories</h2>
+            <div class="space-y-4">
+                <!-- Customer-Facing User Stories -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>Customer-Facing User Stories</span>
+                        <svg class="accordion-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="accordion-content hidden">
+                        <h4 class="font-semibold text-lg mb-2">User Registration & Discovery:</h4>
+                        <ul class="list-disc list-inside space-y-1 text-gray-700 mb-4">
+                            <li>As a new customer, I want to easily register and log in using multiple options (e.g., email, social media), so that I can quickly access Zomato's services.</li>
+                            <li>As a customer, I want to search for restaurants by cuisine, location, or dish, and filter results by preferences (e.g., dietary, price), so that I can efficiently find exactly what I'm looking for.</li>
+                            <li>As a customer, I want to receive AI-powered restaurant and dish recommendations, so that I can discover new options tailored to my tastes.</li>
+                        </ul>
+                        <h4 class="font-semibold text-lg mb-2">Ordering & Payment:</h4>
+                        <ul class="list-disc list-inside space-y-1 text-gray-700 mb-4">
+                            <li>As a customer, I want to add items to my cart and customize my order (e.g., add notes, modify ingredients), so that I get my meal exactly as I want it.</li>
+                            <li>As a customer, I want to have multiple secure payment options (e.g., UPI, cards, wallets, COD), so that I can complete my order conveniently and safely.</li>
+                        </ul>
+                        <h4 class="font-semibold text-lg mb-2">Post-Order Experience:</h4>
+                        <ul class="list-disc list-inside space-y-1 text-gray-700">
+                            <li>As a customer, I want to track my order in real-time on a map, including the delivery partner's location, so that I know exactly when my food will arrive.</li>
+                            <li>As a customer, I want to provide ratings and reviews for restaurants and delivery experiences, so that I can share my feedback and help others make informed choices.</li>
+                        </ul>
                     </div>
-                    <div class="hidden md:block">
-                        <div class="flowchart-arrow"></div>
-                        <p class="text-sm text-[#118AB2] -mt-4">Orders & Revenue</p>
+                </div>
+
+                <!-- Restaurant Partner User Stories -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>Restaurant Partner User Stories</span>
+                        <svg class="accordion-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="accordion-content hidden">
+                        <h4 class="font-semibold text-lg mb-2">Onboarding & Profile Management:</h4>
+                        <ul class="list-disc list-inside space-y-1 text-gray-700 mb-4">
+                            <li>As a restaurant owner, I want to easily onboard my restaurant and manage my profile details (e.g., timings, menu, FSSAI info), so that my business is accurately represented on the platform.</li>
+                            <li>As a restaurant owner, I want to manage my menu items, including adding, editing, and marking items in/out of stock, so that my online menu is always up-to-date.</li>
+                        </ul>
+                        <h4 class="font-semibold text-lg mb-2">Order & Business Management:</h4>
+                        <ul class="list-disc list-inside space-y-1 text-gray-700 mb-4">
+                            <li>As a restaurant staff member, I want to receive instant notifications for new orders and efficiently accept/process them, so that I can fulfill customer orders promptly.</li>
+                            <li>As a restaurant owner, I want to access comprehensive business reports (e.g., sales, payouts, customer funnel), so that I can analyze my performance and make data-driven decisions.</li>
+                            <li>As a restaurant owner, I want to create and manage promotional offers and advertisements, so that I can attract more customers and boost sales.</li>
+                        </ul>
                     </div>
-                     <div class="md:hidden">
-                        <div class="flowchart-arrow-vertical"></div>
-                         <p class="text-sm text-[#118AB2] my-2">Orders & Revenue</p>
+                </div>
+
+                <!-- Delivery Partner User Stories -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>Delivery Partner User Stories</span>
+                        <svg class="accordion-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="accordion-content hidden">
+                        <h4 class="font-semibold text-lg mb-2">Availability & Order Flow:</h4>
+                        <ul class="list-disc list-inside space-y-1 text-gray-700 mb-4">
+                            <li>As a delivery partner, I want to easily log in and manage my availability, so that I can receive delivery assignments when I'm ready to work.</li>
+                            <li>As a delivery partner, I want to receive clear notifications for new orders and accept/decline them efficiently, so that I can manage my delivery tasks effectively.</li>
+                        </ul>
+                        <h4 class="font-semibold text-lg mb-2">Navigation & Support:</h4>
+                        <ul class="list-disc list-inside space-y-1 text-gray-700 mb-4">
+                            <li>As a delivery partner, I want route optimization tools within the app, so that I can find the most efficient path to pick up and deliver orders.</li>
+                            <li>As a delivery partner, I want to track my earnings transparently within the app, so that I can monitor my income.</li>
+                            <li>As a delivery partner, I want in-app chat support and access to emergency services, so that I can quickly resolve issues or get help when needed.</li>
+                        </ul>
                     </div>
-                    <div class="flex flex-col items-center">
-                        <div class="bg-[#FF6B6B] text-white rounded-full w-32 h-32 flex items-center justify-center text-6xl font-bold">📱</div>
-                        <h3 class="text-xl font-bold mt-4 text-[#073B4C]">Customers</h3>
-                        <p class="text-gray-600 max-w-xs">Enjoy convenience, choice, and real-time tracking.</p>
-                    </div>
-                     <div class="hidden md:block">
-                        <div class="flowchart-arrow"></div>
-                        <p class="text-sm text-[#118AB2] -mt-4">Deliveries & Service</p>
-                    </div>
-                     <div class="md:hidden">
-                        <div class="flowchart-arrow-vertical"></div>
-                         <p class="text-sm text-[#118AB2] my-2">Deliveries & Service</p>
-                    </div>
-                    <div class="flex flex-col items-center">
-                        <div class="bg-[#06D6A0] text-white rounded-full w-32 h-32 flex items-center justify-center text-6xl font-bold">🛵</div>
-                        <h3 class="text-xl font-bold mt-4 text-[#073B4C]">Delivery Partners</h3>
-                        <p class="text-gray-600 max-w-xs">Access flexible earning opportunities and well-being support.</p>
+                </div>
+
+                <!-- Platform Administration User Stories -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>Platform Administration User Stories</span>
+                        <svg class="accordion-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="accordion-content hidden">
+                        <h4 class="font-semibold text-lg mb-2">User & Content Management:</h4>
+                        <ul class="list-disc list-inside space-y-1 text-gray-700 mb-4">
+                            <li>As an administrator, I want to manage customer, restaurant, and delivery partner accounts (e.g., activate, suspend, update details), so that I can maintain platform integrity and provide support.</li>
+                            <li>As an administrator, I want to manage restaurant listings, menus, and promotional content across the platform, so that I can ensure accuracy and relevance.</li>
+                        </ul>
+                        <h4 class="font-semibold text-lg mb-2">Monitoring & Reporting:</h4>
+                        <ul class="list-disc list-inside space-y-1 text-gray-700">
+                            <li>As an operations manager, I want to monitor all live orders and intervene in case of issues, so that I can ensure smooth operations and resolve problems quickly.</li>
+                            <li>As a finance analyst, I want to generate detailed reports on revenue, commissions, and payouts across all business segments, so that I can track financial performance and ensure accurate settlements.</li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="profitability" class="mb-16">
-             <div class="bg-white rounded-lg shadow-md p-6 md:p-8">
-                <h2 class="text-3xl font-bold text-[#073B4C] mb-4 text-center">The Road to Profitability</h2>
-                <p class="text-gray-600 mb-8 max-w-4xl mx-auto text-center">Demonstrating mature and disciplined strategy, Zomato shifted its focus from "growth-at-all-costs" to sustainable profitability. This pivot, which included rationalizing international operations, resulted in a dramatic financial turnaround from a significant loss in FY23 to a solid profit in FY24.</p>
-                <div class="chart-container h-80">
-                    <canvas id="profitabilityChart"></canvas>
+        <!-- Requirement Metrics (KPIs) Section -->
+        <section id="kpis" class="mb-16 pt-20 -mt-20">
+            <h2 class="section-title">Requirement Metrics (KPIs)</h2>
+            <div class="space-y-4">
+                <!-- Customer Experience & Engagement Metrics -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>Customer Experience & Engagement Metrics</span>
+                        <svg class="accordion-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="accordion-content hidden">
+                        <ul class="list-disc list-inside space-y-2 text-gray-700">
+                            <li><strong>Average Monthly Transacting Customers (AMTC):</strong> Indicates the size and activity of the core customer base.</li>
+                            <li><strong>Order Frequency (per customer):</strong> Reflects customer engagement and stickiness.</li>
+                            <li><strong>Customer Retention Rate:</strong> Measures the effectiveness of loyalty programs and overall customer satisfaction.</li>
+                            <li><strong>Net Promoter Score (NPS):</strong> Gauges overall customer satisfaction and loyalty.</li>
+                            <li><strong>Average Order Value (AOV):</strong> Indicates customer spending habits and potential for revenue growth per transaction.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Operational Efficiency & Service Quality Metrics -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>Operational Efficiency & Service Quality Metrics</span>
+                        <svg class="accordion-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="accordion-content hidden">
+                        <ul class="list-disc list-inside space-y-2 text-gray-700">
+                            <li><strong>Average Delivery Time:</strong> Directly impacts customer satisfaction and quick commerce competitiveness.</li>
+                            <li><strong>Order Fulfillment Rate:</strong> Measures reliability and operational accuracy.</li>
+                            <li><strong>Restaurant Partner Onboarding Time:</strong> Reflects efficiency of partner acquisition processes.</li>
+                            <li><strong>Delivery Partner Utilization Rate:</strong> Measures efficiency of fleet management and earning opportunities for partners.</li>
+                            <li><strong>Customer Support Resolution Time:</strong> Reflects responsiveness and quality of support.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Financial Performance & Growth Metrics -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>Financial Performance & Growth Metrics</span>
+                        <svg class="accordion-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="accordion-content hidden">
+                        <ul class="list-disc list-inside space-y-2 text-gray-700">
+                            <li><strong>Gross Order Value (GOV):</strong> Primary indicator of overall business scale and transaction volume.</li>
+                            <li><strong>Adjusted Revenue:</strong> Provides a more accurate picture of core earnings.</li>
+                            <li><strong>Adjusted EBITDA:</strong> Key indicator of the company's ability to generate profit from its operations.</li>
+                            <li><strong>Take Rate (Commission Rate):</strong> Measures the profitability of each transaction.</li>
+                            <li><strong>Blinkit Store Count:</strong> Direct measure of quick commerce expansion progress.</li>
+                            <li><strong>Hyperpure Revenue Growth:</strong> Measures the scaling of the B2B business.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Sustainability & Social Impact Metrics -->
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <span>Sustainability & Social Impact Metrics</span>
+                        <svg class="accordion-icon w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </button>
+                    <div class="accordion-content hidden">
+                        <ul class="list-disc list-inside space-y-2 text-gray-700">
+                            <li><strong>Percentage of EV-based Deliveries:</strong> Measures progress towards net-zero emissions.</li>
+                            <li><strong>Plastic Neutrality Achievement:</strong> Reflects commitment to environmental responsibility.</li>
+                            <li><strong>Number of PwD (Persons with Disabilities) Delivery Partners:</strong> Measures progress in inclusive hiring and social impact.</li>
+                            <li><strong>Number of Women in Logistics Roles:</strong> Measures gender diversity in the workforce.</li>
+                        </ul>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="future" class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-            <div class="bg-white rounded-lg shadow-md p-6 md:p-8">
-                <h2 class="text-3xl font-bold text-[#073B4C] mb-4 text-center">Future Forward: Aggressive Expansion</h2>
-                 <p class="text-gray-600 mb-6 text-center">Zomato is not resting on its laurels. The company has laid out ambitious expansion plans for its high-growth segments, signaling a long-term vision for comprehensive market dominance in the food and lifestyle ecosystem.</p>
-                <div class="space-y-6 text-center">
-                    <div>
-                        <p class="text-lg font-semibold text-[#118AB2]">Blinkit Store Target</p>
-                        <p class="text-6xl font-extrabold text-[#073B4C]">2,000</p>
-                        <p class="text-md text-gray-500">by December 2025</p>
-                    </div>
-                    <div>
-                        <p class="text-lg font-semibold text-[#118AB2]">"Going-Out" Annual NOV Goal</p>
-                        <p class="text-6xl font-extrabold text-[#073B4C]">$3B</p>
-                        <p class="text-md text-gray-500">within the next five years</p>
-                    </div>
+        <!-- Constraints, Assumptions, and Risks Section -->
+        <section id="risks" class="mb-16 pt-20 -mt-20">
+            <h2 class="section-title">Constraints, Assumptions, & Risks</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Constraints -->
+                <div class="card bg-blue-50">
+                    <h3 class="subsection-title text-blue-800">Constraints</h3>
+                    <ul class="list-disc list-inside space-y-2 text-gray-700">
+                        <li>High Delivery Costs</li>
+                        <li>Reliance on Discounts</li>
+                        <li>Intense Competitive Landscape</li>
+                        <li>Operational Scalability Capital Expenditure</li>
+                        <li>Regulatory Framework Evolution</li>
+                    </ul>
                 </div>
-            </div>
-            <div class="bg-white rounded-lg shadow-md p-6 md:p-8">
-                <h2 class="text-3xl font-bold text-[#073B4C] mb-4 text-center">Commitment to Sustainability</h2>
-                <p class="text-gray-600 mb-6 text-center">Zomato is actively integrating ambitious Environmental, Social, and Governance (ESG) goals into its business, enhancing its brand reputation and appealing to conscious consumers and investors.</p>
-                <div class="chart-container h-80">
-                    <canvas id="esgChart"></canvas>
+                <!-- Assumptions -->
+                <div class="card bg-green-50">
+                    <h3 class="subsection-title text-green-800">Assumptions</h3>
+                    <ul class="list-disc list-inside space-y-2 text-gray-700">
+                        <li>Continued Smartphone and Internet Penetration Growth</li>
+                        <li>Evolving Consumer Preferences Alignment</li>
+                        <li>Stable Economic Conditions</li>
+                        <li>Scalability of Technology Infrastructure</li>
+                        <li>Availability of Delivery Partner Workforce</li>
+                    </ul>
+                </div>
+                <!-- Risks -->
+                <div class="card bg-red-50">
+                    <h3 class="subsection-title text-red-800">Risks</h3>
+                    <ul class="list-disc list-inside space-y-2 text-gray-700">
+                        <li>Food Safety & Quality Incidents</li>
+                        <li>Increased Regulatory Scrutiny & Penalties</li>
+                        <li>Customer Acquisition & Retention Challenges</li>
+                        <li>Delivery Partner Churn & Dissatisfaction</li>
+                        <li>Technological Obsolescence & Competitor Innovation</li>
+                        <li>Cybersecurity Breaches</li>
+                        <li>Economic Downturn Impact</li>
+                    </ul>
                 </div>
             </div>
         </section>
 
-    </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white p-6 text-center text-sm">
+        <p>&copy; 2025 Zomato BRD Overview. All rights reserved.</p>
+    </footer>
 
     <script>
-        const energeticPlayfulPalette = {
-            red: '#FF6B6B',
-            yellow: '#FFD166',
-            green: '#06D6A0',
-            blue: '#118AB2',
-            darkBlue: '#073B4C'
-        };
+        // JavaScript for accordion functionality
+        document.addEventListener('DOMContentLoaded', () => {
+            const accordionHeaders = document.querySelectorAll('.accordion-header');
 
-        const chartTooltipConfig = {
-            plugins: {
-                tooltip: {
-                    callbacks: {
-                        title: function(tooltipItems) {
-                            const item = tooltipItems[0];
-                            let label = item.chart.data.labels[item.dataIndex];
-                            if (Array.isArray(label)) {
-                                return label.join(' ');
-                            }
-                            return label;
-                        }
-                    }
-                },
-                legend: {
-                    labels: {
-                        color: energeticPlayfulPalette.darkBlue,
-                        font: {
-                            size: 14
-                        }
-                    }
-                }
-            }
-        };
+            accordionHeaders.forEach(header => {
+                header.addEventListener('click', () => {
+                    const accordionContent = header.nextElementSibling;
+                    const accordionIcon = header.querySelector('.accordion-icon');
 
-        function wrapLabel(str, maxWidth) {
-            if (str.length <= maxWidth) {
-                return str;
-            }
-            const words = str.split(' ');
-            const lines = [];
-            let currentLine = '';
-            for (const word of words) {
-                if ((currentLine + word).length > maxWidth && currentLine.length > 0) {
-                    lines.push(currentLine.trim());
-                    currentLine = '';
-                }
-                currentLine += word + ' ';
-            }
-            lines.push(currentLine.trim());
-            return lines;
-        }
+                    // Toggle visibility of the content
+                    accordionContent.classList.toggle('hidden');
+                    // Rotate the icon
+                    accordionIcon.classList.toggle('rotate');
 
-        const segmentsCtx = document.getElementById('segmentsChart').getContext('2d');
-        new Chart(segmentsCtx, {
-            type: 'bar',
-            data: {
-                labels: ['Food Delivery', 'Quick Commerce (Blinkit)', 'B2B Supplies (Hyperpure)'],
-                datasets: [{
-                    label: 'Gross Order Value (GOV) in FY24 (in ₹ Crore)',
-                    data: [32224, 12469, 3172],
-                    backgroundColor: [
-                        energeticPlayfulPalette.red,
-                        energeticPlayfulPalette.yellow,
-                        energeticPlayfulPalette.green
-                    ],
-                    borderColor: energeticPlayfulPalette.darkBlue,
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                ...chartTooltipConfig,
-                indexAxis: 'y',
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                    x: {
-                        beginAtZero: true,
-                        ticks: {
-                            color: energeticPlayfulPalette.darkBlue,
-                            callback: function(value) {
-                                return '₹' + (value / 1000) + 'k';
-                            }
-                        }
-                    },
-                    y: {
-                       ticks: {
-                            color: energeticPlayfulPalette.darkBlue
-                        }
+                    // Close other open accordions in the same group (optional, but good for single-open behavior)
+                    // accordionHeaders.forEach(otherHeader => {
+                    //     if (otherHeader !== header) {
+                    //         otherHeader.nextElementSibling.classList.add('hidden');
+                    //         otherHeader.querySelector('.accordion-icon').classList.remove('rotate');
+                    //     }
+                    // });
+                });
+            });
+
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        // Calculate offset for sticky header
+                        const headerOffset = document.querySelector('header').offsetHeight;
+                        const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                        const offsetPosition = elementPosition - headerOffset;
+
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: "smooth"
+                        });
                     }
-                }
-            }
+                });
+            });
         });
-
-        const marketShareCtx = document.getElementById('marketShareChart').getContext('2d');
-        new Chart(marketShareCtx, {
-            type: 'doughnut',
-            data: {
-                labels: ['Zomato', 'Swiggy'],
-                datasets: [{
-                    data: [58, 42],
-                    backgroundColor: [
-                        energeticPlayfulPalette.red,
-                        energeticPlayfulPalette.blue
-                    ],
-                    hoverOffset: 4
-                }]
-            },
-            options: {
-                ...chartTooltipConfig,
-                responsive: true,
-                maintainAspectRatio: false,
-                cutout: '60%',
-            }
-        });
-
-        const marketTrendCtx = document.getElementById('marketTrendChart').getContext('2d');
-        new Chart(marketTrendCtx, {
-            type: 'line',
-            data: {
-                labels: ['2018', '2020', '2022', 'Q1 FY25'],
-                datasets: [{
-                    label: 'Zomato',
-                    data: [38.8, 45, 50, 58],
-                    borderColor: energeticPlayfulPalette.red,
-                    backgroundColor: 'rgba(255, 107, 107, 0.2)',
-                    fill: true,
-                    tension: 0.3
-                }, {
-                    label: 'Swiggy',
-                    data: [61.2, 55, 50, 42],
-                    borderColor: energeticPlayfulPalette.blue,
-                    backgroundColor: 'rgba(17, 138, 178, 0.2)',
-                    fill: true,
-                    tension: 0.3
-                }]
-            },
-            options: {
-                ...chartTooltipConfig,
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                    y: {
-                        beginAtZero: true,
-                        max: 70,
-                        ticks: {
-                            callback: function(value) {
-                                return value + '%'
-                            },
-                            color: energeticPlayfulPalette.darkBlue
-                        }
-                    },
-                    x: {
-                       ticks: {
-                            color: energeticPlayfulPalette.darkBlue
-                        }
-                    }
-                }
-            }
-        });
-
-        const profitabilityCtx = document.getElementById('profitabilityChart').getContext('2d');
-        new Chart(profitabilityCtx, {
-            type: 'bar',
-            data: {
-                labels: ['FY23', 'FY24'],
-                datasets: [{
-                    label: 'Net Profit/Loss (in ₹ Crore)',
-                    data: [-917, 351],
-                    backgroundColor: (context) => {
-                        const value = context.dataset.data[context.dataIndex];
-                        return value < 0 ? energeticPlayfulPalette.red : energeticPlayfulPalette.green;
-                    },
-                    borderColor: energeticPlayfulPalette.darkBlue,
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                ...chartTooltipConfig,
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                    y: {
-                        ticks: {
-                            color: energeticPlayfulPalette.darkBlue,
-                            callback: function(value) {
-                                return '₹' + value + ' Cr';
-                            }
-                        }
-                    },
-                    x: {
-                       ticks: {
-                            color: energeticPlayfulPalette.darkBlue
-                        }
-                    }
-                }
-            }
-        });
-
-        const esgCtx = document.getElementById('esgChart').getContext('2d');
-        const esgLabels = [
-            'EV Delivery Partners (in thousands)',
-            wrapLabel('Plastic Waste Recycled (in thousands MT)', 16),
-            wrapLabel('Persons with Disabilities Onboarded (in thousands)', 16),
-            wrapLabel('Women in Logistics (in thousands)', 16),
-            wrapLabel('First Responders Trained (in thousands)', 16)
-        ];
-        new Chart(esgCtx, {
-            type: 'radar',
-            data: {
-                labels: esgLabels,
-                datasets: [{
-                    label: 'ESG Achievements (Normalized)',
-                    data: [51, 45, 2.1, 6.15, 52.14],
-                    backgroundColor: 'rgba(6, 214, 160, 0.2)',
-                    borderColor: energeticPlayfulPalette.green,
-                    pointBackgroundColor: energeticPlayfulPalette.green,
-                    pointBorderColor: '#fff',
-                    pointHoverBackgroundColor: '#fff',
-                    pointHoverBorderColor: energeticPlayfulPalette.green
-                }]
-            },
-            options: {
-                ...chartTooltipConfig,
-                responsive: true,
-                maintainAspectRatio: false,
-                scales: {
-                    r: {
-                        angleLines: {
-                            color: 'rgba(7, 59, 76, 0.2)'
-                        },
-                        grid: {
-                            color: 'rgba(7, 59, 76, 0.2)'
-                        },
-                        pointLabels: {
-                            color: energeticPlayfulPalette.darkBlue,
-                            font: {
-                                size: 11
-                            }
-                        },
-                        ticks: {
-                            backdropColor: 'transparent',
-                            color: energeticPlayfulPalette.darkBlue
-                        }
-                    }
-                }
-            }
-        });
-
     </script>
 </body>
 </html>
